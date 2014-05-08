@@ -1,3 +1,21 @@
+Version 1.1.2
+bug fixes
+you can now add a <regex><agent> element to specify a User-agent for the regex page request
+
+Version 1.1.1
+bug fixes
+xml database update
+added regex function to scrape the current playing title:
+    <item>
+      <epg>
+        <epg_url>URL of the page to scrape</epg_url>
+        <epg_regex>regex pattern here, first match is appended to the items title</epg_regex>
+      </epg>
+
+Version 1.1.0
+fix play items with multiple links as playlist
+fix reading sources via nfs://
+
 Version 1.0.9
 fix script error when having only one source
 fix decode errors with non ascii characters in list-item

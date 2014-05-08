@@ -40,9 +40,11 @@ def addon_log(string):
         xbmc.log("[addon.live.streams-%s]: %s" %(addon_version, string))
 
 
-def makeRequest(url):
+def makeRequest(url, headers=None):
         try:
-            req = urllib2.Request(url)
+            if headers is None:
+                headers = {'User-agent' : 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:19.0) Gecko/20100101 Firefox/19.0'}
+            req = urllib2.Request(url,None,headers)
             response = urllib2.urlopen(req)
             data = response.read()
             response.close()
@@ -62,7 +64,7 @@ def getSources():
         if os.path.exists(favorites) == True:
             addDir('Favorites','url',4,os.path.join(home, 'resources', 'favorite.png'),FANART,'','','','')
         if addon.getSetting("browse_xml_database") == "true":
-            addDir('XML Database','http://xbmcplus.xb.funpic.de/up/data/files/',15,icon,FANART,'','','','')
+            addDir('XML Database','http://xbmcplus.xb.funpic.de/www-data/filesystem/',15,icon,FANART,'','','','')
         if addon.getSetting("browse_community") == "true":
             addDir('Community Files','community_files',16,icon,FANART,'','','','')
         if os.path.exists(source_file)==True:
@@ -94,10 +96,11 @@ def getSources():
                         addDir(i['title'].encode('utf-8'),i['url'].encode('utf-8'),1,thumb,fanart,desc,genre,date,credits,'source')
 
             else:
-                if isinstance(sources[0], list):
-                    getData(sources[0][1].encode('utf-8'),FANART)
-                else:
-                    getData(sources[0]['url'], sources[0]['fanart'])
+                if len(sources) == 1:
+                    if isinstance(sources[0], list):
+                        getData(sources[0][1].encode('utf-8'),FANART)
+                    else:
+                        getData(sources[0]['url'], sources[0]['fanart'])
 
 
 def addSource(url=None):
@@ -199,7 +202,7 @@ def rmSource(name):
 
 def get_xml_database(url, browse=False):
         if url is None:
-            url = 'http://xbmcplus.xb.funpic.de/up/data/files/'
+            url = 'http://xbmcplus.xb.funpic.de/www-data/filesystem/'
         soup = BeautifulSoup(makeRequest(url), convertEntities=BeautifulSoup.HTML_ENTITIES)
         for i in soup('a'):
             href = i['href']
@@ -241,7 +244,7 @@ def getSoup(url):
             data = makeRequest(url)
         else:
             if xbmcvfs.exists(url):
-                if url.startswith("smb://"):
+                if url.startswith("smb://") or url.startswith("nfs://"):
                     copy = xbmcvfs.copy(url, os.path.join(profile, 'temp', 'sorce_temp.txt'))
                     if copy:
                         data = open(os.path.join(profile, 'temp', 'sorce_temp.txt'), "r").read()
@@ -399,7 +402,14 @@ def getItems(items,fanart):
                 name = ''
             try:
                 if item('epg'):
-                    if item('epg')[0].string > 1:
+                    if item.epg_url:
+                        addon_log('Get EPG Regex')
+                        epg_url = item.epg_url.string
+                        epg_regex = item.epg_regex.string
+                        epg_name = get_epg(epg_url, epg_regex)
+                        if epg_name:
+                            name += ' - ' + epg_name
+                    elif item('epg')[0].string > 1:
                         name += getepg(item('epg')[0].string)
                 else:
                     pass
@@ -468,6 +478,10 @@ def getItems(items,fanart):
                             regexs[i('name')[0].string]['refer'] = i('referer')[0].string
                         except:
                             addon_log("Regex: -- No Referer --")
+                        try:
+                            regexs[i('name')[0].string]['agent'] = i('agent')[0].string
+                        except:
+                            addon_log("Regex: -- No User Agent --")
                     regexs = urllib.quote(repr(regexs))
                 except:
                     regexs = None
@@ -505,6 +519,8 @@ def getRegexParsed(regexs, url):
                     req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; rv:14.0) Gecko/20100101 Firefox/14.0.1')
                     if 'refer' in m:
                         req.add_header('Referer', m['refer'])
+                    if 'agent' in m:
+                        req.add_header('User-agent', m['agent'])
                     response = urllib2.urlopen(req)
                     link = response.read()
                     response.close()
@@ -554,17 +570,19 @@ def getFavorites():
             try: regexs = i[6]
             except: regexs = None
 
-            try:
-                if not i[4] == 0:
-                    addDir(name,url,i[4],iconimage,fanart,'','','','','fav')
-                else:
-                    addLink(url,name,iconimage,fanArt,'','','','fav',playlist,regexs,total)
-            except:
+            if i[4] == 0:
                 addLink(url,name,iconimage,fanArt,'','','','fav',playlist,regexs,total)
+            else:
+                addDir(name,url,i[4],iconimage,fanart,'','','','','fav')
 
 
 def addFavorite(name,url,iconimage,fanart,mode,playlist=None,regexs=None):
         favList = []
+        try:
+            # seems that after 
+            name = name.encode('utf-8', 'ignore')
+        except:
+            pass
         if os.path.exists(favorites)==False:
             addon_log('Making Favorites File')
             favList.append((name,url,iconimage,fanart,mode,playlist,regexs))
@@ -646,15 +664,20 @@ def addDir(name,url,mode,iconimage,fanart,description,genre,date,credits,showcon
 
 
 def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlist,regexs,total):
+        try:
+            name = name.encode('utf-8')
+        except: pass
         ok = True
         if regexs: mode = '17'
         else: mode = '12'
         u=sys.argv[0]+"?"
+        play_list = False
         if playlist:
             if addon.getSetting('add_playlist') == "false":
                 u += "url="+urllib.quote_plus(url)+"&mode="+mode
             else:
-                u += "mode=%s&name=%s&playlist=%s" %(mode, urllib.quote_plus(name), urllib.quote_plus(str(playlist).replace(',','|')))
+                u += "mode=13&name=%s&playlist=%s" %(urllib.quote_plus(name), urllib.quote_plus(str(playlist).replace(',','|')))
+                play_list = True
         else:
             u += "url="+urllib.quote_plus(url)+"&mode="+mode
         if regexs:
@@ -666,7 +689,8 @@ def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlis
         liz=xbmcgui.ListItem(name, iconImage="DefaultVideo.png", thumbnailImage=iconimage)
         liz.setInfo(type="Video", infoLabels={ "Title": name, "Plot": description, "Genre": genre, "dateadded": date })
         liz.setProperty("Fanart_Image", fanart)
-        liz.setProperty('IsPlayable', 'true')
+        if not play_list:
+            liz.setProperty('IsPlayable', 'true')
         if showcontext:
             contextMenu = []
             if showcontext == 'fav':
@@ -710,9 +734,18 @@ def getepg(link):
         sourcetitle = source3[2].split("</a></p></div>")
         nowtitle = sourcetitle[0][17:len(sourcetitle[0])]
         nowtitle = nowtitle.encode('utf-8')
-        nowtitle = nowtitle.encode('utf-8')
-        nowtitle = nowtitle.encode('utf-8')
         return "  - "+nowtitle+" - "+nowtime
+
+
+def get_epg(url, regex):
+        data = makeRequest(url)
+        try:
+            item = re.findall(regex, data)[0]
+            return item
+        except:
+            addon_log('regex failed')
+            addon_log(regex)
+            return
 
 
 xbmcplugin.setContent(int(sys.argv[1]), 'movies')
@@ -787,22 +820,27 @@ addon_log("Name: "+str(name))
 if mode==None:
     addon_log("getSources")
     getSources()
+    xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
 elif mode==1:
     addon_log("getData")
     getData(url,fanart)
+    xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
 elif mode==2:
     addon_log("getChannelItems")
     getChannelItems(name,url,fanart)
+    xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
 elif mode==3:
     addon_log("getSubChannelItems")
     getSubChannelItems(name,url,fanart)
+    xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
 elif mode==4:
     addon_log("getFavorites")
     getFavorites()
+    xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
 elif mode==5:
     addon_log("addFavorite")
@@ -860,17 +898,18 @@ elif mode==13:
 elif mode==14:
     addon_log("get_xml_database")
     get_xml_database(url)
+    xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
 elif mode==15:
     addon_log("browse_xml_database")
     get_xml_database(url, True)
+    xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
 elif mode==16:
     addon_log("browse_community")
     getCommunitySources(True)
+    xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
 elif mode==17:
     addon_log("getRegexParsed")
     getRegexParsed(regexs, url)
-
-xbmcplugin.endOfDirectory(int(sys.argv[1]))
