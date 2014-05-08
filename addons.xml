@@ -282,7 +282,7 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
     </extension>
 </addon>
 
-<addon id="script.tvguideaarronlee" name="TV Guide AarronLee Premium" version="5.1.1" provider-name="AarronLee, DixieDean, Spoyser">
+<addon id="script.tvguideaarronlee" name="TV Guide AarronLee Premium" version="5.1.2" provider-name="AarronLee, DixieDean, Spoyser">
     <requires>
 		<import addon="xbmc.python" version="2.1.0"/>
         <import addon="script.module.simplejson" version="2.0.10"/>

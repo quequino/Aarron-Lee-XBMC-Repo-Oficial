@@ -1,3 +1,6 @@
+v5.1.2
+9 STREAM FIX
+
 v4.0
 VERSION PREMIUM
 Diseño cambiado del GUI
