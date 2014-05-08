@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.xbmchub" name="XBMCHUB.com Addon Repository" version="1.0.2" provider-name="xbmchub.com">
+	<extension point="xbmc.addon.repository" name="XBMCHUB.com Addon Repository">
+		<info compressed="false">http://xbmc-hub-repo.googlecode.com/svn/addons/addons.xml</info>
+		<checksum>http://xbmc-hub-repo.googlecode.com/svn/addons/addons.xml.md5</checksum>
+		<datadir zip="true">http://xbmc-hub-repo.googlecode.com/svn/addons</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>The Best Third Party Addons for XBMC, Brought to you by XBMCHUB.com</summary>
+		<description>The Best Third Party Addons for XBMC, Brought to you by XBMCHUB.com</description>
+		<platform>all</platform>
+                <forum>http://www.xbmchub.com/forums/official-xbmc-hub-repo/</forum>
+                <website>http://www.xbmchub.com/</website>
+	</extension>
+</addon>
+

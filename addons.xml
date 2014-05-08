@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addons>
+<addon id="plugin.video.live.streams"
+       name="LiveStreams"
+       version="1.0.9"
+       provider-name="divingmule">
+  <requires>
+    <import addon="xbmc.python" version="2.0"/>
+	<import addon="script.module.beautifulsoup" version="3.0.8"/>
+    <import addon="script.module.simple.downloader" version="0.9.1"/>
+    <import addon="script.module.simplejson" />
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>livestreams</summary>
+    <description>It's up to you ;-) As an alternative to .strm files this add-on lets you add streams by adding items to an xml file. Thus giving you a nice list with thumbnails, fanart, and media info if you like.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.live.streams.aarronlee"
+       name="LiveStreams-AarronLee"
+       version="1.0.0"
+       provider-name="aarronlee, divingmule">
+  <requires>
+    <import addon="xbmc.python" version="2.0"/>
+    <import addon="script.module.beautifulsoup" version="3.0.8"/>
+    <import addon="script.module.simple.downloader" version="0.9.1"/>
+    <import addon="script.module.simplejson" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>livestreams-tvguideaarronlee</summary>
+    <description>
+      MOD de LiveStreams para que funcione REGEX con el add-on TV Guide AarronLee
+    </description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.LiveTV" name="LiveTv" version="1.5" provider-name=".[COLOR blue]X[/COLOR]unity[COLOR blue]T[/COLOR]alk">
+  <requires>
+    <import addon="xbmc.python" version="2.0"/>
+	<import addon="script.module.beautifulsoup" version="3.0.8"/>
+    <import addon="script.module.simplejson" />
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>LiveTV</summary>
+    <description>LiveTV lets you add streams by adding items to an xml file.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.notfilmon" name="NotFilmOn" version="4.9.2" provider-name=".[COLOR blue]X[/COLOR]unity[COLOR blue]T[/COLOR]alk">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.t0mm0.common" version="0.0.1"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">NotFilmOn</summary>
+    <description lang="en">Stream And Record From FilmON.....Official Support....XBMCTALK.COM</description>
+    <disclaimer lang="en">By using This Plugin You will receive sometimes an advert which helps funds the developers developing.....we all thank you!!</disclaimer>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.ntv" name="NTV.mx" version="3.2.5" provider-name=".[COLOR blue]X[/COLOR]unity[COLOR blue]T[/COLOR]alk">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.t0mm0.common" version="0.0.1"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">NTV.mx</summary>
+    <description lang="en">Stream all of your favourites sports,movies and tv from NTV.mx</description>
+    <platform>all</platform>
+  </extension>
+  <extension point="xbmc.service" library="service.py" start="login" />
+</addon>
+
+<addon id="plugin.video.p2p-streams"
+       name="p2p-streams"
+       version="0.2.7"
+       provider-name="enen92 - fightnight">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.beautifulsoup" version="3.0.8"/>
+    <import addon="script.module.simplejson" />
+    <import addon="script.module.pytz" />
+    <import addon="script.module.mechanize" version="0.2.6"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>P2P-Streams addon</summary>
+    <description lang="en">P2P-Streams addon makes it easy for you to watch peer-to-peer streams in XBMC without the need for external players. Currently supporting Acestream and Sopcast streams it comprises an auto-configuration tool that will download the engines specifically for your platform.
+Supported platforms: Linux (Ubuntu/Debian/CentOS), Raspberry Pi (Openelec,Raspbmc,Xbian), Windows, Mac, Android, Openelec x86_64, Linux armv7 (MXLinux).
+Credits: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugin); Tarasian666 (Mac/Rpi/armv7 ace engines); Divingmule (livestreams plugin); Marquerite (addor art).</description>
+    <description lang="pt">O addon p2p-Streams torna possível assistir de forma simples a streams peer-to-peer directamente no XBMC sem a necessidade de players externos. De momento suporta streams Ace (Acestreams) e Sopcast e inclui uma ferramenta de autoconfiguração que irá fazer o download das engines correspondentes ao seu sistema operativo.
+Plataformas suportadas: Linux (Ubuntu/Debian/CentOS), Raspberry Pi (Openelec,Raspbmc,Xbian), Windows, Mac, Android, Openelec x86_64, Linux armv7 (MXLinux).
+Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugin); Tarasian666 (Mac/Rpi/armv7 ace engines); Divingmule (livestreams plugin); Marquerite (addor art).</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon
+  id="plugin.video.SportsDevil"
+  version="1.8.6.6"
+  name="SportsDevil"
+  provider-name="MaxMustermann">
+  <requires>
+   <import addon="xbmc.python" version="2.1.0"/>
+   <import addon="script.common.plugin.cache" version="0.9.1"/>
+  </requires>
+  <extension
+    point="xbmc.python.pluginsource"
+    library="default.py">
+   <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Play videos of different sports streaming sites</summary>
+    <description>Play videos of different sports streaming sites</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="repository.Aarron-Lee-XBMC-Repo-Oficial" name="Aarron-Lee-XBMC-Repo" version="1.0" provider-name="AarronLee">
+	<extension point="xbmc.addon.repository" name="Aarron-Lee-XBMC-Repo-Oficial-1.0">
+		<info compressed="false">http://github.com/aarronlee/Aarron-Lee-XBMC-Repo-Oficial/raw/master/addons.xml</info>
+		<checksum>http://github.com/aarronlee/Aarron-Lee-XBMC-Repo-Oficial/raw/master/addons.xml.md5</checksum>
+		<datadir zip="true">http://github.com/aarronlee/Aarron-Lee-XBMC-Repo-Oficial/raw/master/zips</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install Mis Addons</summary>
+		<description>Descarga e Instala Addons de AarronLee....... Para mas informacion y actualizaciones metete en www.tvguideaarronlee.com</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.googlecode.anarchintosh-projects" name="anarchintosh addons" version="1.0.1" provider-name="anarchintosh">
+	<extension point="xbmc.addon.repository" name="anarchintosh add-on repository">
+		<info compressed="false">http://anarchintosh-projects.googlecode.com/svn/addons/addons.xml</info>
+		<checksum>http://anarchintosh-projects.googlecode.com/svn/addons/addons.xml.md5</checksum>
+		<datadir zip="true">http://anarchintosh-projects.googlecode.com/svn/addons</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install Addons from http://anarchintosh-projects.googlecode.com</summary>
+		<description>Download and install addons from anarchintosh repository.</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.MaxMustermann.xbmc" name="MaxMustermann's add-ons" version="1.0.1" provider-name="MaxMustermann">
+	<extension point="xbmc.addon.repository" name="MaxMustermann's add-on repository">
+		<info compressed="false">http://xbmc-development-with-passion.googlecode.com/svn/branches/repo/addons.xml</info>
+		<checksum>http://xbmc-development-with-passion.googlecode.com/svn/branches/repo/addons.xml.md5</checksum>
+		<datadir zip="true">http://xbmc-development-with-passion.googlecode.com/svn/branches/repo</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install add-ons from MaxMustermann's repository</summary>
+		<summary lang="de">Installiere Add-ons von MaxMustermann's Repository</summary>
+		<description>download and install add-ons from MaxMustermann's repository.</description>
+		<description lang="de">Downloade und installiere Add-ons von MaxMustermann's Repository.</description>
+		<disclaimer></disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.p2p-streams.xbmc" name="p2p-streams repository" version="1.0.3" provider-name="enen92 - fightnight">
+	<extension point="xbmc.addon.repository" name="p2p-streams Repository">
+		<info compressed="false">http://p2p-strm.googlecode.com/svn/addons/addons.xml</info>
+		<checksum>http://p2p-strm.googlecode.com/svn/addons/addons.xml.md5</checksum>
+		<datadir zip="true">http://p2p-strm.googlecode.com/svn/addons</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>p2p-streams repository</summary>
+   		<description lang="en">Install P2P-Streams addon for XBMC! P2P-Streams addon makes it easy for you to watch peer-to-peer streams in XBMC without the need for external players. Currently supporting Acestream and Sopcast streams it comprises an auto-configuration tool that will download the engines specifically for your platform.
+Supported platforms: Linux (Ubuntu/Debian/CentOS), Raspberry Pi (Openelec,Raspbmc,Xbian), Windows, Mac, Android, Openelec x86_64, Linux armv7 (MXLinux).
+Credits: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugin); Tarasian666 (Mac/Rpi/armv7 ace engines); Divingmule (livestreams plugin); Marquerite (addor art).</description>
+    		<description lang="pt">Instale o addon P2P-Streams para o XBMC! O addon p2p-Streams torna possível assistir de forma simples a streams peer-to-peer directamente no XBMC sem a necessidade de players externos. De momento suporta streams Ace (Acestreams) e Sopcast e inclui uma ferramenta de autoconfiguração que irá fazer o download das engines correspondentes ao seu sistema operativo.
+Plataformas suportadas: Linux (Ubuntu/Debian/CentOS), Raspberry Pi (Openelec,Raspbmc,Xbian), Windows, Mac, Android, Openelec x86_64, Linux armv7 (MXLinux).
+Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugin); Tarasian666 (Mac/Rpi/armv7 ace engines); Divingmule (livestreams plugin); Marquerite (addor art).</description>
+		<disclaimer></disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.SportsDevil" name="SportsDevil repository" version="1.0.1" provider-name="Al101">
+	<extension point="xbmc.addon.repository" name="SportsDevil add-on repository">
+		<info compressed="false">http://raw.github.com/al101/repository.SportsDevil/master/addons.xml</info>
+		<checksum>http://raw.github.com/al101/repository.SportsDevil/master/addons.xml.md5</checksum>
+		<datadir zip="true">http://raw.github.com/al101/repository.SportsDevil/master/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install Unofficial SportsDevil add-on</summary>
+		<description>SportsDevil created by MaxMustermann maintained by [COLOR blue]XBMCHUB.COM[/COLOR] community (enen92, jorges4lu2, alex35...)</description>
+		<disclaimer></disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.xbmchub" name="XBMCHUB.com Addon Repository" version="1.0.2" provider-name="xbmchub.com">
+	<extension point="xbmc.addon.repository" name="XBMCHUB.com Addon Repository">
+		<info compressed="false">http://xbmc-hub-repo.googlecode.com/svn/addons/addons.xml</info>
+		<checksum>http://xbmc-hub-repo.googlecode.com/svn/addons/addons.xml.md5</checksum>
+		<datadir zip="true">http://xbmc-hub-repo.googlecode.com/svn/addons</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>The Best Third Party Addons for XBMC, Brought to you by XBMCHUB.com</summary>
+		<description>The Best Third Party Addons for XBMC, Brought to you by XBMCHUB.com</description>
+		<platform>all</platform>
+                <forum>http://www.xbmchub.com/forums/official-xbmc-hub-repo/</forum>
+                <website>http://www.xbmchub.com/</website>
+	</extension>
+</addon>
+
+<addon id="repository.xunitytalk" name=".[COLOR blue]X[/COLOR]unity[COLOR blue]T[/COLOR]alk Repository" version="1.0.0" provider-name=".[COLOR blue]X[/COLOR]unity[COLOR blue]T[/COLOR]alk">
+	<extension point="xbmc.addon.repository" name="Mikey1234 Addon Repository">
+		<info compressed="false">http://xunitytalk-repository.googlecode.com/svn/addons/addons.xml</info>
+		<checksum>http://xunitytalk-repository.googlecode.com/svn/addons/addons.xml.md5</checksum>
+		<datadir zip="true">http://xunitytalk-repository.googlecode.com/svn/addons</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>The Best Third Party Addons for XBMC, .[COLOR blue]X[/COLOR]unity[COLOR blue]T[/COLOR]alk</summary>
+		<description>The Best Third Party Addons for XBMC, .[COLOR blue]X[/COLOR]unity[COLOR blue]T[/COLOR]alk</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="script.sportsdevilfixes"
+       name="SportsDevil Fixes"
+       version="1.0.5"
+       provider-name="enen92">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.t0mm0.common" version="1.1.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="addon.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Automatically clone SportsDevil-fixes from al101 github master, copy it to addons folder and launch SportsDevil (containing fixes) afterwards. A simple way to keep SportsDevil always updated. [B][COLOR red]This addon is not an alternative repository and the author does not claim any rights on the SportsDevil plugin. SportsDevil must be installed first (from Max repo) for this script to work.[/B][/COLOR].</summary>
+        <description>Automatically clone SportsDevil-fixes from al101 github master, copy it to addons folder and launch SportsDevil (containing fixes) afterwards. A simple way to keep SportsDevil always updated. [B][COLOR red]This addon is not an alternative repository and the author does not claim any rights on the SportsDevil plugin. SportsDevil must be installed first (from Max repo) for this script to work.[/B][/COLOR][B][COLOR yellow] SportsDevil addon is made by MaxMustermann and fixes are provided by al101[/B][/COLOR]</description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="script.tvguideaarronlee" name="TV Guide AarronLee Premium" version="5.1.1" provider-name="AarronLee, DixieDean, Spoyser">
+    <requires>
+		<import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.simplejson" version="2.0.10"/>
+        <import addon="script.module.elementtree" version="1.2.7"/>
+        <import addon="script.module.buggalo" version="1.1.2"/>
+		<import addon="plugin.video.live.streams" version="1.0.9"/>
+		<import addon="plugin.video.live.streams.aarronlee" version="1.0.0"/>
+        <import addon="plugin.video.LiveTV" version="1.5"/>
+        <import addon="plugin.video.notfilmon" version="4.9.2"/>
+        <import addon="plugin.video.ntv" version="3.2.5"/>
+		<import addon="plugin.video.p2p-streams" version="0.2.7"/>
+        <import addon="plugin.video.SportsDevil" version="1.8.6.6"/>
+        <import addon="repository.googlecode.anarchintosh-projects" version="1.0.1"/>
+        <import addon="repository.MaxMustermann.xbmc" version="1.0.1"/>
+	    <import addon="repository.p2p-streams.xbmc" version="1.0.3"/>
+		 <import addon="repository.SportsDevil" version="1.0.1"/>
+        <import addon="repository.xbmchub" version="1.0.2"/>
+        <import addon="repository.xunitytalk" version="1.0.0"/>
+    </requires>
+    <extension point="xbmc.python.script" library="addon.py"><provides>video</provides></extension>
+    <extension point="xbmc.python.script" library="addon.py"/>
+    <extension point="xbmc.service" library="service.py" start="login" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="da">TV Guide med XMLTV og streaming support</summary>
+        <summary lang="de">TV Guide mit XMLTV und Streamingunterstützung</summary>
+        <summary lang="el">Οδηγός Τηλεόρασης με XMLTV και υποστήριξη ροών</summary>
+        <summary lang="en">TV Guide with XMLTV and streaming support</summary>
+        <summary lang="es">TV Guide con XMLTV y soporte para streaming</summary>
+        <summary lang="gl">Guía de TV con soporte XMLTV e transmisións</summary>
+        <summary lang="it">Guida TV con supporto XMLTV e streaming</summary>
+        <summary lang="ko">XMLTV와 스트리밍을 지원하는 TV Guide</summary>
+        <summary lang="pl">TV Guide obsługujący XMLTV oraz transmisję strumieniową</summary>
+        <summary lang="pt">Guia TV com suporte XMLTV e transmissões</summary>
+        <summary lang="pt_BR">Guia de TV com XMLTV e suporte para transmissão online</summary>
+        <summary lang="sk">TV Program s podporou XMLTV a streamovania</summary>
+        <summary lang="sv">TV-guide med XML-TV och strömningsstöd</summary>
+        <summary lang="zh">支持XMLTV和流的电视指南</summary>
+        <description lang="da">TV guiden giver dig et overblik over hvad der er på TV lige nu, så slipper du for at zappe væk fra XBMC![CR]EPG data kan indlæses fra YouSee.tv, DR.dk, TvTid.dk, XMLTV fil,  eller en ekstern JSON kilde.[CR][CR]Naviger med piletasterne og skift side med kanal + og -.[CR][CR]Har du kommentarer, ris eller ros til denne addon er du velkommen til at delta    ge i debatten på min blog på http://tommy.winther.nu</description>
+        <description lang="de">Der TV-Guide gibt Dir einen Überblick, was gerade im TV läuft, so dass man nicht von XBMC wegschalten muss! [CR]EPG-Daten können von YouSee.tv, DR.dk, TvTid.dk, XMLTV-Dateien oder über eine woanders abgelegte JSON-Quelle eingebunden werden.[CR][CR] Navigiere mit den Pfeiltasten und wechsle die Seite mittels der Kanalwahltasten +/-. [CR][CR]Wenn Du Kommentare oder Vorschläge zu diesem addon hast, fühl Dich eingeladen, in der Debatte auf meinem Blog unter http://tommy.winther.nu teilzunehmen.</description>
+        <description lang="el">Ο Οδηγός TV σας δίνει μια περίληψη του τι παίζει στην τηλεόραση αυτή τη στιγμή, ούτως ώστε να μη χρειαστεί να κλείσετε το XBMC![CR]Δεδομένα EPG μπορούν να ληφθούν μέσω των YouSee.tv, DR.dk, TvTid.dk, αρχείων XMLTV ή απομακρυσμένες πηγές JSON.[CR][CR]Περιηγηθείτε χρησιμοποιώντας τα βέλη κατεύθυνσης και αλλάξτε σελίδα μέσω των πλήκτρων Κανάλι + / -.[CR][CR]Αν έχετε σχόλια ή προτάσεις για αυτό το πρόσθετο μπορείτε να συμμετάσχετε ελεύθερα στη συζήτηση στο blog μου στο http://tommy.winther.nu</description>
+        <description lang="en">A comprehensive EPG that is compatible with many popular live TV addons. TV Guide Dixie gives you an overview on what is on TV right now whilst automatically triggering your favourite live TV addons.[CR]EPG data can be retrieved from XMLTV file or specialised DIXIE Url sources.[CR][CR]Navigate using the arrow keys and change page using channel + / -.[CR]</description>
+        <description lang="es">TV Guide ofrece una visión general de lo que hay en la televisión ahora mismo, así no tienes que cambiar el canal en XBMC![CR]Los datos EPG pueden ser obtenidos de YouSee.tv, DR.dk, TvTid.dk, archivo XMLTV o de una fuente remota de JSON.[CR][CR]Navegue usando las teclas de flecha y cambie de página mediante canal + / -.[CR][CR]Si usted tiene comentarios o sugerencias para este complemente, no dude en participar en el debate de mi blog en http://tommy.winther.nu</description>
+        <description lang="gl">A Guía de TV fornece dunha visión xeral do que está a acontecer na TV nestes intres, para que non teña que trocar de canle fóra do XBMC![CR]Os datos da Guía pódense obter de YouSee.tv, DR.dk, TvTid.dk, do ficheiro de XMLTV ou dunha fonte JSON remota.[CR][CR]Navegue usando as frechas e troque a página usando canle + / -.[CR][CR]Se ten comentarios ou suxestións, pode facelos no meu blogue en http://tommy.winther.nu</description>
+        <description lang="it">La guida TV ti da un'idea di cosa c'è in TV ora, così non dovrai cambiare canale in XBMC![CR]I dati EPG possono essere recuperati da YouSee.tv, DR.dk, TvTid.dk, da file XMLTV o sorgenti JSON remote.[CR][CR]Naviga usando le freccie e cambia pagina usando Canale +/-.[CR][CR]Se hai commenti o suggerimenti per questo addon, sei libero di partecipare alla discussione sul mio blog su http://tommy.winther.nu</description>
+        <description lang="pl">Program TV Guide pokazuje Ci co jest nadawane w telewizji, więc teraz już nie musisz zmieniać kanału z XBMC![CR]Dane EPG mogą być pobierane z YouSee.tv, DR.dk, TvTid.dk, pliku XMLTV lub zewnętrznego źródła JSON.[CR][CR]Aby poruszać się po interfejsie użyj klawiszy strzałek, możesz także zmieniać strony za pomocą klawiszy Program + / -.[CR][CR]Jeśli masz komentarz lub sugestie dotyczące tego dodatku będę wdzięczny jeśli podzielisz się nimi ze mną na blogu http://tommy.winther.nu</description>
+        <description lang="pt">O Guia TV dá-lhe uma visão geral do que está a passar na TV neste momento, para que não tenha de sair do XBMC![CR]Os dados de EPG podem ser obtidos de YouSee.tv, DR.dk, TvTid.dk, ficheiro XMLTV ou fonte remota JSON.[CR][CR]Navegue utilizando as setas e mude a página com as teclas de canal + / -.[CR][CR]Se tiver comentários ou sugestões para este addon, esteja à vontade para participar no debate acedendo ao blog http://tommy.winther.nu</description>
+        <description lang="pt_BR">O TV Guide dá uma prévia do que está passando na TV, para que você não precise mudar de canal no XBMC![CR]Dados de EPG podem ser obtidos do YouSee.tv, DR.dk, TVTid.dk, arquivo XML ou fonte JSON remota.[CR][CR]Navegue usando as setas e mude de página usando canal +/-.[CR][CR]Se você tiver algum comentário ou sugestões para este addon, sinta-se livre para participar do debate no meu blog em http://tommy.winther.nu.</description>
+        <description lang="sk">TV Program Vám dá prehľad čo sa práve v TV vysiela, aby ste nemuseli prepnúť preč z XBMC!&#10;EPG dáta sa môžu načítavať z YouSee.tv, DR.dk, TvTid.dk, XMLTV súboru alebo vzdialeného JSON zdroja.&#10;&#10;Navigujete šípkami a stránku zmeníte pomocou Kanál + / -.&#10;&#10;Ak máte poznámky či pripomienky k tomuto doplnku, prosím prispejte do diskusie na blogu http://tommy.winther.nu.</description>
+        <description lang="sv">TV-Guide ger dig en överblick av vad som visas på TV just nu, så du inte behöver ändra kanal från XBMC![CR]EPG-data kan hämtas från YouSee.tv, DR.dk, TvTid.dk, XMLTV-fil eller JSON fjärrkälla.[CR][CR]Navigera med hjälp av piltangenterna och ändra kanaler +/-.[CR][CR]Om du har kommentarer eller förslag för det här tillägget, var god och delta i debatten på min blogg http://tommy.winther.nu</description>
+        <description lang="zh">电视指南让你不用退出XBMC频道就能知道电视台正播出什么节目！[CR]电子节目单数据获取于YouSee.tv、DR.dk、TvTid.dk、XMLTV文件或远程JSON源。[CR][CR]用方向键导航，用频道+/-换页。[CR][CR]对本插件有何意见或建议，请到我的博客讨论http://tommy.winther.nu</description>
+        <platform>all</platform>
+        <language></language>
+        <license>GPLv2</license>
+    </extension>
+</addon>
+</addons>

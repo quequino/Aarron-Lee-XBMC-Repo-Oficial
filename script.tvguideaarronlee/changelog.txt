@@ -1,0 +1,41 @@
+v4.0
+VERSION PREMIUM
+Diseño cambiado del GUI
+Opcion "recordar" quitado de momento para hacer unos arreglos
+WINDOWS/MAC pueden pulsar el teclado "i" y ver la progrmacion de otros canales mientras viendo un canal en pantalla completa
+
+v3.2
+VERSION PREMIUM
+Mas estable con dispositivos Android
+
+v3.1.1
+VERSION PREMIUM
+Fallo arreglado con los dispositivos Android
+
+v3.1
+VERSION PREMIUM
+
+v3.0.2
+Ahora cuando no hay ninguna programación, sale NO PROGRAMME AVALIABLE para poder elegir los canales
+Puede detener el stream despues de 1 hora, 2 horas, 3 horas, 4 horas o nunca
+
+v3.0.1
+Nuevos canales BEIN Sports y Canales xXx
+Comprueba que el skin esta actualizado cada vez que inicias el plugin
+
+v3.0
+Descarga los logos para los canales desde el servidor
+
+v2.0
+Nuevo canales SKY Digital UK, MBC y Canales USA
+Descarga addons.ini cada vez que inicias el plugin
+
+v1.2
+Nueva pestaña en config. del addon "Delete Database" para poder borrar el archivo streams y la epg
+Pulsa "ESC" mientras se reproduce un canal y volverá a la parrilla de canales con una minipantalla para seguir viendo lo que estabas viendo
+
+v1.1
+Auto actualiza la EPG a las 00:00
+
+v1.0 
+Programacion de D+ con LiveStreams Integrado

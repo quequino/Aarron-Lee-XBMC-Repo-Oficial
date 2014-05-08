@@ -1,0 +1,38 @@
+Version 1.1.2
+bug fixes
+you can now add a <regex><agent> element to specify a User-agent for the regex page request
+
+Version 1.1.1
+bug fixes
+xml database update
+added regex function to scrape the current playing title:
+    <item>
+      <epg>
+        <epg_url>URL of the page to scrape</epg_url>
+        <epg_regex>regex pattern here, first match is appended to the items title</epg_regex>
+      </epg>
+
+Version 1.1.0
+fix play items with multiple links as playlist
+fix reading sources via nfs://
+
+Version 1.0.9
+fix script error when having only one source
+fix decode errors with non ascii characters in list-item
+fix downloading of files from the xml database
+changed the regex function to be executed when selecting the list-item instead of when adding the list-item
+
+Version 1.0.8
+downloading of files is now done via the context menu
+you can now add media info to a file that will be shown while viewing the list of sources
+    using <channels_info> or <items_info> elements, see the example files in the add-on directory
+added a regex function to retrieve tokens, cookies or the such - thanks to c420
+    http://forum.xbmc.org/showthread.php?tid=97116&pid=1274417#pid1274417
+added support for adding a directory to the add-on's favorites
+
+Version 1.0.7
+added add-on setting "Add items with multiple links as play lists"
+    if enabled only one list item will be shown and the item will be played as a play list
+
+Version 1.0.6
+added support for the .xml Database

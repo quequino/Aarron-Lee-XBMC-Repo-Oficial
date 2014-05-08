@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="script.sportsdevilfixes"
+       name="SportsDevil Fixes"
+       version="1.0.5"
+       provider-name="enen92">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.t0mm0.common" version="1.1.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="addon.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Automatically clone SportsDevil-fixes from al101 github master, copy it to addons folder and launch SportsDevil (containing fixes) afterwards. A simple way to keep SportsDevil always updated. [B][COLOR red]This addon is not an alternative repository and the author does not claim any rights on the SportsDevil plugin. SportsDevil must be installed first (from Max repo) for this script to work.[/B][/COLOR].</summary>
+        <description>Automatically clone SportsDevil-fixes from al101 github master, copy it to addons folder and launch SportsDevil (containing fixes) afterwards. A simple way to keep SportsDevil always updated. [B][COLOR red]This addon is not an alternative repository and the author does not claim any rights on the SportsDevil plugin. SportsDevil must be installed first (from Max repo) for this script to work.[/B][/COLOR][B][COLOR yellow] SportsDevil addon is made by MaxMustermann and fixes are provided by al101[/B][/COLOR]</description>
+        <platform>all</platform>
+    </extension>
+</addon>
