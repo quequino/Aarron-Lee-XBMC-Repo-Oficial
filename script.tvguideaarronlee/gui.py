@@ -38,13 +38,13 @@ import shutil
 ADDON        = xbmcaddon.Addon(id = 'script.tvguideaarronlee')
 MASHMODE     = (ADDON.getSetting('mashmode') == 'true')
 SKIN         = ADDON.getSetting('aarronlee.skin')
-SKINSVERSION = '1'
+SKINSVERSION = '2'
 datapath     = xbmc.translatePath(ADDON.getAddonInfo('profile'))
 extras       = os.path.join(datapath, 'extras')
 skinfolder   = os.path.join(datapath, extras, 'skins')
 mashpath     = os.path.join(skinfolder, 'Mash Up')
 skinpath     = os.path.join(skinfolder, SKIN)
-mashfile     = os.path.join(xbmc.translatePath('special://profile/addon_data/plugin.video.movie25/aarronlee/mashup.ini'))
+mashfile     = os.path.join(xbmc.translatePath('special://profile/addon_data/plugin.video.movie25/dixie/mashup.ini'))
 version      = os.path.join(skinfolder, 'skinsversion.txt')
 
 print '********* LATEST SKINS VERSION *********'

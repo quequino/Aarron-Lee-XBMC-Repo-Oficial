@@ -1,5 +1,17 @@
+v5.1.3
+BUG FIX en Skin
+
 v5.1.2
 9 STREAM FIX
+
+v5.1.1
+Error a cargar datos FIX
+
+v5.1.0
+BETA Android, iOS, Linux
+
+v5.0.0
+BETA Windows
 
 v4.0
 VERSION PREMIUM

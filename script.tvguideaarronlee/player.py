@@ -97,6 +97,11 @@ def checkForAlternateStreaming(url):
         print '****** Alternate MashUp ******'
         print url
         return alternateStream(url)
+		
+    if 'plugin.video.live.streams.aarronlee' in url:
+        print '****** Alternate LiveStreams-AarronLee ******'
+        print url
+        return alternateStream(url)
         
     return False
 
@@ -129,3 +134,4 @@ if __name__ == '__main__':
 # plugin.audio.ramfm
 # plugin.video.tgun
 # plugin.video.movie25
+# plugin.video.live.streams.aarronlee
