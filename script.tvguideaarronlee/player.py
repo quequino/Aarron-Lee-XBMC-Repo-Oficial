@@ -12,7 +12,7 @@ def CheckIdle(maxIdle):
     delay = 60
     count = delay
     dp = xbmcgui.DialogProgress()
-    dp.create("TV Guide AarronLee","Streaming will automatically quit in %d seconds" % count, "Press Cancel to contine viewing")
+    dp.create("TV Guide Dixie","Streaming will automatically quit in %d seconds" % count, "Press Cancel to contine viewing")
     dp.update(0)
               
     while xbmc.Player().isPlaying() and count > 0 and not dp.iscanceled():
@@ -97,11 +97,6 @@ def checkForAlternateStreaming(url):
         print '****** Alternate MashUp ******'
         print url
         return alternateStream(url)
-		
-    if 'plugin.video.live.streams.aarronlee' in url:
-        print '****** Alternate LiveStreams-AarronLee ******'
-        print url
-        return alternateStream(url)
         
     return False
 
@@ -134,4 +129,3 @@ if __name__ == '__main__':
 # plugin.audio.ramfm
 # plugin.video.tgun
 # plugin.video.movie25
-# plugin.video.live.streams.aarronlee

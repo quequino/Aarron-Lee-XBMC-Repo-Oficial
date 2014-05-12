@@ -2,7 +2,7 @@
 <addons>
 <addon id="plugin.video.live.streams"
        name="LiveStreams"
-       version="1.1.2"
+       version="1.1.3"
        provider-name="divingmule">
   <requires>
     <import addon="xbmc.python" version="2.0"/>
@@ -18,28 +18,6 @@
     <description>
       It's up to you ;-) As an alternative to .strm files this add-on lets you add streams by adding items to an xml file.
       Thus giving you a nice list with thumbnails, fanart, and media info if you like.
-    </description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="plugin.video.live.streams.aarronlee"
-       name="LiveStreams-AarronLee"
-       version="1.0.0"
-       provider-name="aarronlee, divingmule">
-  <requires>
-    <import addon="xbmc.python" version="2.0"/>
-    <import addon="script.module.beautifulsoup" version="3.0.8"/>
-    <import addon="script.module.simple.downloader" version="0.9.1"/>
-    <import addon="script.module.simplejson" />
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>livestreams-tvguideaarronlee</summary>
-    <description>
-      MOD de LiveStreams para que funcione REGEX con el add-on TV Guide AarronLee
     </description>
     <platform>all</platform>
   </extension>
@@ -284,15 +262,12 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
     </extension>
 </addon>
 
-<addon id="script.tvguideaarronlee" name="TV Guide AarronLee Premium" version="5.1.3" provider-name="AarronLee, DixieDean, Spoyser">
+<addon id="script.tvguideaarronlee" name="TV Guide AarronLee Premium" version="5.1.4" provider-name="AarronLee, DixieDean, Spoyser">
     <requires>
 		<import addon="xbmc.python" version="2.1.0"/>
         <import addon="script.module.simplejson" version="2.0.10"/>
         <import addon="script.module.elementtree" version="1.2.7"/>
         <import addon="script.module.buggalo" version="1.1.2"/>
-		<import addon="plugin.video.live.streams" version="1.1.2"/>
-		<import addon="plugin.video.live.streams.aarronlee" version="1.0.0"/>
-        <import addon="plugin.video.LiveTV" version="1.5"/>
         <import addon="plugin.video.notfilmon" version="4.9.2"/>
         <import addon="plugin.video.ntv" version="3.2.5"/>
 		<import addon="plugin.video.p2p-streams" version="0.2.7"/>
