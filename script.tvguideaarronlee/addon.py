@@ -30,7 +30,7 @@ xbmc.Player().stop
 ADDON       = xbmcaddon.Addon(id = 'script.tvguideaarronlee')
 HOME        = ADDON.getAddonInfo('path')
 TITLE       = 'TV Guide AarronLee Premium'
-VERSION     = '5.1.4'
+VERSION     = '5.1.5'
 addon       = xbmcaddon.Addon()
 addonid     = addon.getAddonInfo('id')
 versioninfo = addon.getAddonInfo('version')

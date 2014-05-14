@@ -1,3 +1,10 @@
+v5.1.5
+Compatible con GOTHAM v13.0
+Opción "recordar" activado
+
+v5.1.4
+Favoritos FIX
+
 v5.1.3
 BUG FIX en Skin
 

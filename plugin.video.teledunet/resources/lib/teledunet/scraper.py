@@ -1,24 +1,27 @@
 import cookielib
 import re
-import urllib2
+import urllib2,urllib
 from BeautifulSoup import BeautifulSoup
 from models import ChannelItem
 from hardcode import HARDCODED_STREAMS
+import xbmcaddon
+#addon_id = 'plugin.video.shahidmbcnet'
+selfAddon = xbmcaddon.Addon()
 
 #HEADER_REFERER = 'http://www.teledunet.com/'
 HEADER_REFERER = 'http://www.teledunet.com/list_chaines.php'
 HEADER_HOST = 'www.teledunet.com'
 HEADER_USER_AGENT = 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'
-TELEDUNET_TIMEPLAYER_URL = 'http://www.teledunet.com/player/?channel=%s'
+TELEDUNET_TIMEPLAYER_URL = 'http://www.teledunet.com/mobile/?con'
 PPV_CHANNEL_URL='rtmp://5.135.134.110:1935/teledunet/'
 
 cj = cookielib.CookieJar()
 opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
 
 
-def _get(request):
+def _get(request,post=None):
     """Performs a GET request for the given url and returns the response"""
-    return opener.open(request).read()
+    return opener.open(request,post).read()
 
 def _html(url):
     """Downloads the resource at the given url and parses via BeautifulSoup"""
@@ -29,7 +32,7 @@ def _html(url):
 
 def __get_cookie_session():
     # Fetch the main Teledunet website to be given a Session ID
-    _html('http://www.teledunet.com')
+    _html('http://www.teledunet.com/')
 
     for cookie in cj:
         if cookie.name == 'PHPSESSID':
@@ -37,9 +40,29 @@ def __get_cookie_session():
 
     raise Exception('Cannot find PHP session from Teledunet')
 
+def performLogin():
+    print 'performing login'
+    userName=selfAddon.getSetting( "teledunetTvLogin" )
+    password=selfAddon.getSetting( "teledunetTvPassword" )
+    req = urllib2.Request('http://www.teledunet.com/boutique/connexion.php')
+    req.add_header('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36')
+    post={'login_user':userName,'pass_user':password}
+    post = urllib.urlencode(post)
+    link = _get(req,post)
+
+    req = urllib2.Request('http://www.teledunet.com/')#access main page too
+    req.add_header('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36')
+    _get(req,post)
+
 
 def __get_channel_time_player(channel_name):
-    url = TELEDUNET_TIMEPLAYER_URL % channel_name
+    loginname=selfAddon.getSetting( "teledunetTvLogin" )
+    
+    if not (loginname==None or loginname==""):
+        performLogin()
+        
+    url = TELEDUNET_TIMEPLAYER_URL# % channel_name
+    print url
     # Set custom header parameters to simulate request is coming from website
     req = urllib2.Request(url)
     req.add_header('Referer', HEADER_REFERER)
@@ -48,14 +71,17 @@ def __get_channel_time_player(channel_name):
     req.add_header('Cookie', __get_cookie_session())
 
     html = _get(req)
-    m = re.search('time_player=(.*);', html, re.M | re.I)
+    m = re.search('aut=\'\?id0=(.*?)\'', html, re.M | re.I)
     time_player_str = eval(m.group(1))
 
-    m = re.search('curent_media=\'(.*)\';', html, re.M | re.I)
-    if 'bein_sport' in channel_name:
+    
+    #print 'set_favoris\(\''+channel_name+'\'.*?rtmp://(.*?)\''
+    m = re.search('rtmp://(.*?)/%s\''%channel_name, html, re.M | re.I)
+    if  m ==None:
         rtmp_url=PPV_CHANNEL_URL+channel_name
     else:
         rtmp_url = m.group(1)
+        rtmp_url='rtmp://%s/%s'%(rtmp_url,channel_name)
     play_path = rtmp_url[rtmp_url.rfind("/") + 1:]
     return rtmp_url, play_path, repr(time_player_str).rstrip('0').rstrip('.')
 
