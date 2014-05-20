@@ -22,12 +22,11 @@
   </extension>
 </addon>
 
-<addon id="plugin.video.LiveTV" name="LiveTV-AarronLee" version="2.0" provider-name="Aarron Lee, Mikey1234">
+<addon id="plugin.video.LiveTV" name="LiveTV-AarronLee" version="2.1" provider-name="Aarron Lee, Mikey1234">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
 	<import addon="script.module.beautifulsoup" version="3.0.8"/>
-    <import addon="script.module.simplejson" />
-    <import addon="script.module.xbmc.ads" version="1.0.0"/>
+    <import addon="script.module.simplejson" version="2.0.10"/>
   </requires>
   <extension point="xbmc.python.pluginsource"
             library="default.py">
