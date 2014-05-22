@@ -71,7 +71,7 @@ class StreamsService(object):
 
     def loadFavourites(self):
         entries = list()
-        path = xbmc.translatePath('special://profile/favourites.xml')
+        path = xbmc.translatePath('special://profile/favourites-aarronlee.xml')
         if os.path.exists(path):
             f = open(path)
             xml = f.read()

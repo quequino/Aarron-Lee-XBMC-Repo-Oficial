@@ -30,15 +30,17 @@ xbmc.Player().stop
 ADDON       = xbmcaddon.Addon(id = 'script.tvguideaarronlee')
 HOME        = ADDON.getAddonInfo('path')
 TITLE       = 'TV Guide AarronLee Premium'
-VERSION     = '5.1.6'
+VERSION     = '5.1.7'
 addon       = xbmcaddon.Addon()
 addonid     = addon.getAddonInfo('id')
 versioninfo = addon.getAddonInfo('version')
 datapath    = xbmc.translatePath(ADDON.getAddonInfo('profile'))
 addonpath   = os.path.join(ADDON.getAddonInfo('path'), 'resources')
+profilepath = os.path.join(xbmc.translatePath('special://profile'), '')
 default_ini = os.path.join(addonpath, 'addons.ini')
 local_ini   = os.path.join(addonpath, 'local.ini')
 current_ini = os.path.join(datapath, 'addons.ini')
+fav_xml     = os.path.join(profilepath,'favourites-aarronlee.xml')
 cats        = ADDON.getSetting('categories')
 oss         = 'OffSide Streams'
 stvb        = 'StreamTVBox'
@@ -99,7 +101,14 @@ try:
 except:
     pass
 
-
+path = fav_xml
+try:
+    url = 'http://www.tvguideaarronlee.com/pluginfiles/favourites-aarronlee.xml'
+    urllib.urlretrieve(url, path)
+except:
+    pass
+	
+	
 busy = None
 try:
     import xbmcgui
