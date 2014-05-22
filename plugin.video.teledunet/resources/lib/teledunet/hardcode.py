@@ -224,8 +224,40 @@ HARDCODED_STREAMS = [{
                          'path': 'djibouti'},
                      {
                          'title': 'OSN Yahala HD +2',
-                         'thumbnail': 'http://www.lyngsat-logo.com/tvchannel/ae/OSN-Ya-Hala-HD--2.html',
+                         'thumbnail': 'http://www.lyngsat-logo.com/hires/oo/osn_ya_hala_hd_plus2.png',
                          'path': 'osn_yahala'},
+                     {
+                         'title': 'OSN Yahala Drama',
+                         'thumbnail': 'http://press.osn.com/logo/logos/OYA.png',
+                         'path': 'osn_yahala_Drama'},
+                     {
+                         'title': 'OSN Yahala HD',
+                         'thumbnail': 'http://www.lyngsat-logo.com/hires/oo/osn_ya_hala_hd.png',
+                         'path': 'osn_yahala_hd'},
+                     {
+                         'title': 'OSN Movies Action HD',
+                         'thumbnail': 'http://www.lyngsat-logo.com/hires/oo/osn_movies_action_hd.png',
+                         'path': 'osn_moies_action'},
+                     {
+                         'title': 'OSN Movies HD +2',
+                         'thumbnail': 'http://www.lyngsat-logo.com/hires/oo/osn_movies_hd_plus2.png',
+                         'path': 'osn_moies_2'},
+                     {
+                         'title': 'OSN Movies Comedy',
+                         'thumbnail': 'http://www.lyngsat-logo.com/hires/oo/osn_movies_comedy_hd.png',
+                         'path': 'osn_moies_comdy'},
+                     {
+                         'title': 'ART Hekayat',
+                         'thumbnail': 'http://www.lyngsat-logo.com/hires/aa/art_hekayat.png',
+                         'path': 'art-hek'},
+                     {
+                         'title': 'ART Hekayat 2',
+                         'thumbnail': 'http://www.lyngsat-logo.com/hires/aa/art_hekayat2.png',
+                         'path': 'art-hek2'},
+                     {
+                         'title': 'OSN Movies Premiere HD',
+                         'thumbnail': 'http://www.lyngsat-logo.com/hires/oo/osn_movies_hd.png',
+                         'path': 'osn_moies_prem'},
                      {
                          'title': 'Cartoon Network',
                          'thumbnail': 'http://www.teledunet.com//player/icones/cartoon_network.jpg',
