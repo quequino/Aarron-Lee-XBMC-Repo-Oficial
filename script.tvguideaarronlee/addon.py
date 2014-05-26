@@ -21,7 +21,6 @@ import xbmc
 import xbmcaddon
 import urllib
 import socket 
-socket.setdefaulttimeout(5) # 5 seconds 
 import os
 import shutil
 xbmc.Player().stop
@@ -30,7 +29,7 @@ xbmc.Player().stop
 ADDON       = xbmcaddon.Addon(id = 'script.tvguideaarronlee')
 HOME        = ADDON.getAddonInfo('path')
 TITLE       = 'TV Guide AarronLee Premium'
-VERSION     = '5.1.7'
+VERSION     = '5.1.8'
 addon       = xbmcaddon.Addon()
 addonid     = addon.getAddonInfo('id')
 versioninfo = addon.getAddonInfo('version')

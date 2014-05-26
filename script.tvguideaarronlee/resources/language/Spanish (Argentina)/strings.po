@@ -40,6 +40,18 @@ msgctxt "#30303"
 msgid "Cancel"
 msgstr "Cancelar"
 
+msgctxt "#30304"
+msgid "Choose stream"
+msgstr "Elegir stream"
+
+msgctxt "#30305"
+msgid "You can choose your own .strm file to play, when you want to watch this channel."
+msgstr "Puedes elegir tu propio archivo .strm a reproducir, cuando quieres ver este canal."
+
+msgctxt "#30306"
+msgid "Remove stream file"
+msgstr "Eliminar archivo de stream"
+
 msgctxt "#30307"
 msgid "Channels"
 msgstr "Canales"
