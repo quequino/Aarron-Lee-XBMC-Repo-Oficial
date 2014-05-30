@@ -15,6 +15,21 @@ try:
 except:
     import simplejson as json
 import SimpleDownloader as downloader
+g_ignoreSetResolved=['plugin.video.f4mTester','plugin.video.shahidmbcnet']
+
+REMOTE_DBG=False;
+if REMOTE_DBG:
+    # Make pydev debugger works for auto reload.
+    # Note pydevd module need to be copied in XBMC\system\python\Lib\pysrc
+    try:
+        import pysrc.pydevd as pydevd
+    # stdoutToServer and stderrToServer redirect stdout and stderr to eclipse console
+        pydevd.settrace('localhost', stdoutToServer=True, stderrToServer=True)
+    except ImportError:
+        sys.stderr.write("Error: " +
+            "You must add org.python.pydev.debug.pysrc to your PYTHONPATH.")
+        sys.exit(1)  
+
 
 addon = xbmcaddon.Addon('plugin.video.live.streams')
 addon_version = addon.getAddonInfo('version')
@@ -392,7 +407,9 @@ def getSubChannelItems(name,url,fanart):
 def getItems(items,fanart):
         total = len(items)
         addon_log('Total Items: %s' %total)
+		
         for item in items:
+            #print item
             try:
                 name = item('title')[0].string
                 if name is None:
@@ -400,6 +417,8 @@ def getItems(items,fanart):
             except:
                 addon_log('Name Error')
                 name = ''
+			
+
             try:
                 if item('epg'):
                     if item.epg_url:
@@ -426,7 +445,7 @@ def getItems(items,fanart):
             except:
                 addon_log('Error <link> element, Passing:'+name.encode('utf-8', 'ignore'))
                 continue
-
+            
             try:
                 thumbnail = item('thumbnail')[0].string
                 if thumbnail == None:
@@ -472,7 +491,13 @@ def getItems(items,fanart):
                     regexs = {}
                     for i in item('regex'):
                         regexs[i('name')[0].string] = {}
-                        regexs[i('name')[0].string]['expre'] = i('expres')[0].string
+                        #regexs[i('name')[0].string]['expre'] = i('expres')[0].string
+                        try:
+                            regexs[i('name')[0].string]['expre'] = i('expres')[0].string
+                            if not regexs[i('name')[0].string]['expre']:
+                                regexs[i('name')[0].string]['expre']=''
+                        except:
+                            addon_log("Regex: -- No Referer --")
                         regexs[i('name')[0].string]['page'] = i('page')[0].string
                         try:
                             regexs[i('name')[0].string]['refer'] = i('referer')[0].string
@@ -482,11 +507,45 @@ def getItems(items,fanart):
                             regexs[i('name')[0].string]['agent'] = i('agent')[0].string
                         except:
                             addon_log("Regex: -- No User Agent --")
+                        try:
+                            regexs[i('name')[0].string]['post'] = i('post')[0].string
+                        except:
+                            addon_log("Regex: -- Not a post")
+                        try:
+                            regexs[i('name')[0].string]['rawpost'] = i('rawpost')[0].string
+                        except:
+                            addon_log("Regex: -- Not a rawpost")
+
+                        try:
+                            regexs[i('name')[0].string]['readcookieonly'] = i('readcookieonly')[0].string
+                        except:
+                            addon_log("Regex: -- Not a readCookieOnly")
+                        #print i
+                        try:
+                            regexs[i('name')[0].string]['cookiejar'] = i('cookiejar')[0].string
+                            if not regexs[i('name')[0].string]['cookiejar']:
+                                regexs[i('name')[0].string]['cookiejar']=''
+                        except:
+                            addon_log("Regex: -- Not a cookieJar")							
+                        try:
+                            regexs[i('name')[0].string]['setcookie'] = i('setcookie')[0].string
+                        except:
+                            addon_log("Regex: -- Not a setcookie")
+                                                    
+                        #try:
+                        #    regexs[i('name')[0].string]['ignorecache'] = i('ignorecache')[0].string
+                        #except:
+                        #    addon_log("Regex: -- no ignorecache")
+                        #try:
+                        #    regexs[i('name')[0].string]['ignorecache'] = i('ignorecache')[0].string
+                        #except:
+                        #    addon_log("Regex: -- no ignorecache")			
+
                     regexs = urllib.quote(repr(regexs))
                 except:
                     regexs = None
                     addon_log('regex Error: '+name.encode('utf-8', 'ignore'))
-
+            
             try:
                 if len(url) > 1:
                     alt = 0
@@ -501,36 +560,132 @@ def getItems(items,fanart):
                         addLink('', name.encode('utf-8', 'ignore'),thumbnail,fanArt,desc,genre,date,True,playlist,regexs,total)
                 else:
                     addLink(url[0],name.encode('utf-8', 'ignore'),thumbnail,fanArt,desc,genre,date,True,None,regexs,total)
+                    #print 'success'
             except:
                 addon_log('There was a problem adding item - '+name.encode('utf-8', 'ignore'))
 
 
-def getRegexParsed(regexs, url):
-        regexs = eval(urllib.unquote(regexs))
-        cachedPages = {}
+def getRegexParsed(regexs, url,cookieJar=None,forCookieJarOnly=False,recursiveCall=False,cachedPages={}, rawPost=False):#0,1,2 = URL, regexOnly, CookieJarOnly
+        if not recursiveCall:
+            regexs = eval(urllib.unquote(regexs))
+        #cachedPages = {}
+        print 'url',url
         doRegexs = re.compile('\$doregex\[([^\]]*)\]').findall(url)
+        print 'doRegexs',doRegexs,regexs
+
         for k in doRegexs:
             if k in regexs:
+                print 'processing ' ,k
                 m = regexs[k]
-                if m['page'] in cachedPages:
+                print m
+                cookieJarParam=False
+                if  'cookiejar' in m: # so either create or reuse existing jar
+                    #print 'cookiejar exists',m['cookiejar']
+                    cookieJarParam=m['cookiejar']
+                    if  '$doregex' in cookieJarParam:
+                        cookieJar=getRegexParsed(regexs, m['cookiejar'],cookieJar,True, True,cachedPages)
+                        cookieJarParam=True
+                    else:
+                        cookieJarParam=True
+                if cookieJarParam:
+                    if cookieJar==None:
+                        print 'create cookie jar'
+                        import cookielib
+                        cookieJar = cookielib.LWPCookieJar()
+                        #print 'cookieJar new',cookieJar
+                        
+ 
+                if  '$doregex' in m['page']:
+                    m['page']=getRegexParsed(regexs, m['page'],cookieJar,recursiveCall=True,cachedPages=cachedPages)
+
+                if  'post' in m and '$doregex' in m['post']:
+                    m['post']=getRegexParsed(regexs, m['post'],cookieJar,recursiveCall=True,cachedPages=cachedPages)
+                    print 'post is now',m['post']
+
+                if  'rawpost' in m and '$doregex' in m['rawpost']:
+                    m['rawpost']=getRegexParsed(regexs, m['rawpost'],cookieJar,recursiveCall=True,cachedPages=cachedPages,rawPost=True)
+                    print 'rawpost is now',m['rawpost']
+                
+
+
+                if m['page'] in cachedPages and not 'ignorecache' in m and forCookieJarOnly==False :
                     link = cachedPages[m['page']]
                 else:
+                    #print 'Ingoring Cache',m['page']
                     req = urllib2.Request(m['page'])
+                    print 'req',m['page']
                     req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; rv:14.0) Gecko/20100101 Firefox/14.0.1')
                     if 'refer' in m:
                         req.add_header('Referer', m['refer'])
                     if 'agent' in m:
                         req.add_header('User-agent', m['agent'])
-                    response = urllib2.urlopen(req)
+                    if 'setcookie' in m:
+                        print 'adding cookie',m['setcookie']
+                        req.add_header('Cookie', m['setcookie'])
+
+                    if not cookieJar==None:
+                        #print 'cookieJarVal',cookieJar
+                        cookie_handler = urllib2.HTTPCookieProcessor(cookieJar)
+                        opener = urllib2.build_opener(cookie_handler, urllib2.HTTPBasicAuthHandler(), urllib2.HTTPHandler())
+                        opener = urllib2.install_opener(opener)
+                    #print 'after cookie jar'
+                    post=None
+
+                    if 'post' in m:
+                        postData=m['post']
+                        splitpost=postData.split(',');
+                        post={}
+                        for p in splitpost:
+                            n=p.split(':')[0];
+                            v=p.split(':')[1];
+                            post[n]=v
+                        post = urllib.urlencode(post)
+
+                    if 'rawpost' in m:
+                        post=m['rawpost']
+
+
+                    if post:
+                        response = urllib2.urlopen(req,post)
+                    else:
+                        response = urllib2.urlopen(req)
+
                     link = response.read()
+
                     response.close()
                     cachedPages[m['page']] = link
-                reg = re.compile(m['expre']).search(link)
-                url = url.replace("$doregex[" + k + "]", reg.group(1).strip())
+                    print 'store link for',m['page'],forCookieJarOnly
+                    if forCookieJarOnly:
+                        return cookieJar# do nothing
+                    if  '$doregex' in m['expre']:
+                        m['expre']=getRegexParsed(regexs, m['expre'],cookieJar,recursiveCall=True,cachedPages=cachedPages)
+                print 'exp k and url'
+                print m['expre'],k,url
+                print 'aa'
+                if not m['expre']=='':
+                    print 'doing it ',m['expre']
+                    reg = re.compile(m['expre']).search(link)
+                    val=reg.group(1).strip()
+                    if rawPost:
+                        print 'rawpost'
+                        val=urllib.quote_plus(val)
+                    url = url.replace("$doregex[" + k + "]", val)
+                else:
+                    url = url.replace("$doregex[" + k + "]",'')
+        if '$epoctime$' in url:
+            url=url.replace('$epoctime$',getEpocTime())
+        if recursiveCall: return url
+        print 'final url',url
         item = xbmcgui.ListItem(path=url)
+        #setResolvedUrl
+        #xbmc.playlist(xbmc.playlist_video).clear()
+        #xbmc.playlist(xbmc.playlist_video).add(url)
+        #xbmc.Player().play(item=url)
         xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, item)
 
-
+def getEpocTime():
+    import time
+    return str(int(time.time()*1000))
 def get_params():
         param=[]
         paramstring=sys.argv[2]
@@ -663,7 +818,8 @@ def addDir(name,url,mode,iconimage,fanart,description,genre,date,credits,showcon
         return ok
 
 
-def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlist,regexs,total):
+def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlist,regexs,total,setCookie=""):
+        #print 'url,name',url,name
         try:
             name = name.encode('utf-8')
         except: pass
@@ -682,15 +838,22 @@ def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlis
             u += "url="+urllib.quote_plus(url)+"&mode="+mode
         if regexs:
             u += "&regexs="+regexs
+        if not setCookie == '':
+            u += "&setCookie="+urllib.quote_plus(setCookie)
+  
         if date == '':
             date = None
         else:
             description += '\n\nDate: %s' %date
+        #print 'adding',name
         liz=xbmcgui.ListItem(name, iconImage="DefaultVideo.png", thumbnailImage=iconimage)
         liz.setInfo(type="Video", infoLabels={ "Title": name, "Plot": description, "Genre": genre, "dateadded": date })
         liz.setProperty("Fanart_Image", fanart)
-        if not play_list:
+        if (not play_list) and not any(x in url for x in g_ignoreSetResolved):#  (not url.startswith('plugin://plugin.video.f4mTester')):
+            print 'setting isplayable',url
             liz.setProperty('IsPlayable', 'true')
+        else:
+            print 'NOT setting isplayable'
         if showcontext:
             contextMenu = []
             if showcontext == 'fav':
@@ -717,7 +880,9 @@ def addLink(url,name,iconimage,fanart,description,genre,date,showcontext,playlis
                      %(sys.argv[0], urllib.quote_plus(playlist_name), urllib.quote_plus(str(playlist).replace(',','|'))))
                      ]
                 liz.addContextMenuItems(contextMenu_)
+        #print 'adding',name
         ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,totalItems=total)
+        #print 'added',name
         return ok
 
 
@@ -888,8 +1053,17 @@ elif mode==11:
 
 elif mode==12:
     addon_log("setResolvedUrl")
-    item = xbmcgui.ListItem(path=url)
-    xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, item)
+
+    if not any(x in url for x in g_ignoreSetResolved):#not url.startswith("plugin://plugin.video.f4mTester") :
+        item = xbmcgui.ListItem(path=url)
+        xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, item)
+        #xbmc.playlist(xbmc.playlist_video).clear()
+        #xbmc.playlist(xbmc.playlist_video).add(url)
+        #xbmc.Player(xbmc.PLAYER_CORE_MPLAYER).play(item=url)
+    else:
+        print 'Not setting setResolvedUrl'
+        xbmc.executebuiltin('XBMC.RunPlugin('+url+')')
+
 
 elif mode==13:
     addon_log("play_playlist")

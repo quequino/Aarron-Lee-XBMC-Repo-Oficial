@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addons>
+<addon id="plugin.video.f4mTester" version="1.0.15" name="f4mTester" provider-name="Shani">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.video.F4mProxy" version="1.0.14"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>f4mTester</summary>
+        <description></description>
+        <platform>all</platform>
+    </extension>
+</addon>
+
 <addon id="plugin.video.live.streams"
        name="LiveStreams-AarronLee"
-       version="2.0.1"
-       provider-name="divingmule">
+       version="3.0.0"
+       provider-name="Chusterfield, AarronLee">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
     <import addon="script.module.beautifulsoup" version="3.0.8"/>
     <import addon="script.module.simple.downloader" version="0.9.1"/>
+	<import addon="script.video.F4mProxy" version="1.0.14"/>
+	<import addon="plugin.video.f4mTester" version="1.0.15"/>
     <import addon="script.module.simplejson" />
   </requires>
   <extension point="xbmc.python.pluginsource" library="default.py">
@@ -314,5 +331,23 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
         <language></language>
         <license>GPLv2</license>
     </extension>
+</addon>
+
+<addon id="script.video.F4mProxy"
+	     name="F4mProxy"
+	     version="1.0.14"
+	     provider-name="Shani">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+    <import addon="script.module.buggalo" version="1.1.2"/>
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+<extension point="xbmc.python.script" library="addon.py"/>
+
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">Proxy for f4m</summary>
+    <description lang="en">Use this addon to play F4m v1 and v2 streams</description>
+  </extension>
 </addon>
 </addons>
