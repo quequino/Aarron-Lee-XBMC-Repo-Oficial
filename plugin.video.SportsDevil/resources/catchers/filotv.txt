@@ -4,7 +4,7 @@ item_info_build=FiloTV - %s
 
 item_info_name=pageUrl
 item_info_from=@PARAM1@
-item_info_build=http://1cdn.filotv.pw/%s.html
+item_info_build=http://filotv.pw/player2.php?id=%s
 
 item_info_name=tmp3
 item_info_from=pageUrl

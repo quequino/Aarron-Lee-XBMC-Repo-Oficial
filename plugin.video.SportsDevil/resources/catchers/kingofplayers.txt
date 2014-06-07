@@ -4,7 +4,8 @@ item_info_build=KingOfPlayers - %s
 
 item_info_name=pageUrl
 item_info_from=@PARAM1@
-item_info_build=http://cdn.kingofplayers.com/%s.html
+#item_info_convert=getInfo('http://cdn.kingofplayers.com/%s.js','.*src="([^'"]+).*','@REFERER@')
+item_info_build=http://kingofplayers.com/player2.php?id=%s
 
 item_info_name=tmp3
 item_info_from=pageUrl
