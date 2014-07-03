@@ -17,23 +17,21 @@
 
 <addon id="plugin.video.live.streams"
        name="LiveStreams-AarronLee"
-       version="3.0.0"
-       provider-name="Chusterfield, AarronLee">
+       version="4.0.0"
+       provider-name="AarronLee, Shani">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="script.module.beautifulsoup" version="3.0.8"/>
-    <import addon="script.module.simple.downloader" version="0.9.1"/>
-	<import addon="script.video.F4mProxy" version="1.0.14"/>
-	<import addon="plugin.video.f4mTester" version="1.0.15"/>
+    <import addon="script.module.beautifulsoup" version="3.2.1"/>
+    <import addon="script.module.simple.downloader" version="0.9.4"/>
     <import addon="script.module.simplejson" />
   </requires>
   <extension point="xbmc.python.pluginsource" library="default.py">
     <provides>video</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary>livestreams</summary>
+    <summary>LiveStreams para TVGuideAarronLee Premium</summary>
     <description>
-      Ver 9streams, freelive.tv, flashstreaming etc con está nueva versión de LiveStreams exlusivo para TVGuideAarronLee
+       Ver 9streams, freelive.tv, flashstreaming etc con está nueva versión de LiveStreams exlusivo para TVGuideAarronLee
     </description>
     <platform>all</platform>
   </extension>
@@ -278,13 +276,13 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
     </extension>
 </addon>
 
-<addon id="script.tvguideaarronlee" name="TV Guide AarronLee Premium" version="5.1.8" provider-name="AarronLee, DixieDean, Spoyser">
+<addon id="script.tvguideaarronlee" name="TV Guide AarronLee Premium" version="5.1.9" provider-name="AarronLee, DixieDean, Spoyser">
     <requires>
 		<import addon="xbmc.python" version="2.1.0"/>
         <import addon="script.module.simplejson" version="2.0.10"/>
         <import addon="script.module.elementtree" version="1.2.7"/>
         <import addon="script.module.buggalo" version="1.1.2"/>
-	     <import addon="plugin.video.live.streams" version="2.0.1"/>
+	     <import addon="plugin.video.live.streams" version="4.0.0"/>
         <import addon="plugin.video.notfilmon" version="4.9.2"/>
         <import addon="plugin.video.ntv" version="3.2.5"/>
 		<import addon="plugin.video.p2p-streams" version="0.2.7"/>
