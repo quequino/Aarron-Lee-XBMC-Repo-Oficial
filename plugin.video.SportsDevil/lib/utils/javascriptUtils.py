@@ -3,6 +3,7 @@
 import re
 import urllib
 from string import join
+import traceback, sys
 
 class JsFunctions:
     
@@ -110,4 +111,140 @@ class JsUnpacker:
             result = "0123456789abcdefghijklmnopqrstuvwxyz"[num % radix] + result
             num /= radix
         return result
+        
+class JsUnpackerV2:
 
+    def unpackAll(self, data):
+        try:
+            in_data=data
+            sPattern = '(eval\\(function\\(p,a,c,k,e,d.*)'
+            enc_data=re.compile(sPattern).findall(in_data)
+
+            for enc_val in enc_data:
+                unpack_val=self.unpack(enc_val)
+                in_data=in_data.replace(enc_val,unpack_val)
+            return in_data
+        except: 
+            traceback.print_exc(file=sys.stdout)
+            return data
+        
+        
+    def containsPacked(self, data):
+        return 'p,a,c,k,e,d' in data
+        
+    def unpack(self,sJavascript,iteration=1, totaliterations=1  ):
+
+        aSplit = sJavascript.split("rn p}('")
+
+        p1,a1,c1,k1=('','0','0','')
+        ss="p1,a1,c1,k1=(\'"+aSplit[1].split(".spli")[0]+')' 
+        exec(ss)
+        
+        k1=k1.split('|')
+        aSplit = aSplit[1].split("))'")
+        e = ''
+        d = ''#32823
+        sUnpacked1 = str(self.__unpack(p1, a1, c1, k1, e, d,iteration))
+        if iteration>=totaliterations:
+            return sUnpacked1
+        else:
+            return self.unpack(sUnpacked1,iteration+1)
+
+    def __unpack(self,p, a, c, k, e, d, iteration,v=1):
+        while (c >= 1):
+            c = c -1
+            if (k[c]):
+                aa=str(self.__itoaNew(c, a))
+                p=re.sub('\\b' + aa +'\\b', k[c], p)# THIS IS Bloody slow!
+        return p
+
+    def __itoa(self,num, radix):
+
+        result = ""
+        if num==0: return '0'
+        while num > 0:
+            result = "0123456789abcdefghijklmnopqrstuvwxyz"[num % radix] + result
+            num /= radix
+        return result
+        
+    def __itoaNew(self,cc, a):
+        aa="" if cc < a else self.__itoaNew(int(cc / a),a) 
+        cc = (cc % a)
+        bb=chr(cc + 29) if cc> 35 else str(self.__itoa(cc,36))
+        return aa+bb
+          
+        
+class JsUnwiser:
+
+    def unwiseAll(self, data):
+        try:
+            in_data=data
+            sPattern = 'eval\\(function\\(w,i,s,e\\).*?}\\((.*?)\\)'
+            wise_data=re.compile(sPattern).findall(in_data)
+            for wise_val in wise_data:
+                unpack_val=self.unwise(wise_val)
+                #print '\nunpack_val',unpack_val
+                in_data=in_data.replace(wise_val,unpack_val)
+            return in_data
+        except: 
+            traceback.print_exc(file=sys.stdout)
+            return data
+        
+    def containsWise(self, data):
+        return 'w,i,s,e' in data
+        
+    def unwise(self, sJavascript):
+        #print 'sJavascript',sJavascript
+        page_value=""
+        try:        
+            ss="w,i,s,e=("+sJavascript+')' 
+            exec (ss)
+            page_value=self.__unpack(w,i,s,e)
+        except: traceback.print_exc(file=sys.stdout)
+        return page_value
+        
+    def __unpack( self,w, i, s, e):
+        lIll = 0;
+        ll1I = 0;
+        Il1l = 0;
+        ll1l = [];
+        l1lI = [];
+        while True:
+            if (lIll < 5):
+                l1lI.append(w[lIll])
+            elif (lIll < len(w)):
+                ll1l.append(w[lIll]);
+            lIll+=1;
+            if (ll1I < 5):
+                l1lI.append(i[ll1I])
+            elif (ll1I < len(i)):
+                ll1l.append(i[ll1I])
+            ll1I+=1;
+            if (Il1l < 5):
+                l1lI.append(s[Il1l])
+            elif (Il1l < len(s)):
+                ll1l.append(s[Il1l]);
+            Il1l+=1;
+            if (len(w) + len(i) + len(s) + len(e) == len(ll1l) + len(l1lI) + len(e)):
+                break;
+            
+        lI1l = ''.join(ll1l)#.join('');
+        I1lI = ''.join(l1lI)#.join('');
+        ll1I = 0;
+        l1ll = [];
+        for lIll in range(0,len(ll1l),2):
+            #print 'array i',lIll,len(ll1l)
+            ll11 = -1;
+            if ( ord(I1lI[ll1I]) % 2):
+                ll11 = 1;
+            #print 'val is ', lI1l[lIll: lIll+2]
+            l1ll.append(chr(    int(lI1l[lIll: lIll+2], 36) - ll11));
+            ll1I+=1;
+            if (ll1I >= len(l1lI)):
+                ll1I = 0;
+        ret=''.join(l1ll)
+        if 'eval(function(w,i,s,e)' in ret:
+            ret=re.compile('eval\(function\(w,i,s,e\).*}\((.*?)\)').findall(ret)[0] 
+            return self.unwise(ret)
+        else:
+            return ret

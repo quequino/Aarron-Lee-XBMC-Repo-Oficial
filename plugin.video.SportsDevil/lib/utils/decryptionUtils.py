@@ -7,7 +7,7 @@ import re
 from regexUtils import parseTextToGroups
 from webUtils import get_redirected_url
 
-from javascriptUtils import JsFunctions, JsUnpacker
+from javascriptUtils import JsFunctions, JsUnpacker,JsUnpackerV2, JsUnwiser
 
 
 def encryptDES_ECB(data, key):
@@ -46,6 +46,8 @@ def doDemystify(data):
     #init jsFunctions and jsUnpacker
     jsF = JsFunctions()
     jsU = JsUnpacker()
+    jsUV2 =JsUnpackerV2()
+    jsUW = JsUnwiser()
 
     # replace NUL
     data = data.replace('\0','')
@@ -131,5 +133,26 @@ def doDemystify(data):
     # JS P,A,C,K,E,D
     if jsU.containsPacked(data):
         data = jsU.unpackAll(data)
+        
+    escape_again=False
+    #if still exists then apply v2
+    if jsUV2.containsPacked(data):
+        data = jsUV2.unpackAll(data)
+        escape_again=True
 
+    # JS W,I,S,E
+    if jsUW.containsWise(data):
+        data = jsUW.unwiseAll(data)
+        escape_again=True
+
+    # unescape again
+    if escape_again:
+        r = re.compile('unescape\(\s*["\']([^\'"]+)["\']')
+        gs = r.findall(data)
+        if gs:
+            for g in gs:
+                quoted=g
+                data = data.replace(quoted, urllib.unquote_plus(quoted))            
     return data
+
+    

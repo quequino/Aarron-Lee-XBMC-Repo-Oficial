@@ -687,7 +687,7 @@ class Parser(object):
                 a = int(a)
                 b = int(b)
                 try:
-                    src = a/b
+                    src = str(a/b)
                 except:
                     pass
                 

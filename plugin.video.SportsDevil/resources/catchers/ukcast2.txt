@@ -18,8 +18,9 @@ item_info_build=%s
 
 
 item_info_name=url
-item_info_from=rtmpe://cdn.ukcast.tv/redirect playpath=' + @PARAM1@ + ' swfUrl=' + swf + ' live=1 timeout=15 swfVfy=1 pageUrl=http://www.ukcast.tv
+item_info_from=rtmpe://strm.ukcast.tv/redirect playpath=' + @PARAM1@ + ' swfUrl=' + swf + ' live=1 timeout=15 swfVfy=1 pageUrl=http://www.ukcast.tv
 item_info_build=%s
 
-#rtmpe://188.0.226.130/redirect
+#rtmpe://178.18.31.63/redirect
 #rtmpe://strm.ukcast.tv/redirect
+#rtmpe://cdn.ukcast.tv/redirect

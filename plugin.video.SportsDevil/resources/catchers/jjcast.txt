@@ -8,7 +8,7 @@ item_info_build=http://jjcast.com/player.php?stream=%s&width=640&height=385
 
 item_info_name=tmp
 item_info_from=pageUrl
-item_info_convert=getInfo('%s','.*?j i=[^\s]+ [^\s]+\(\)([^i]+)i.g.*','@REFERER@')
+item_info_convert=getInfo('%s','.*?i=[^\s]+\s*[^\s]+\(\)([^i]+)i.g.*','@REFERER@')
 item_info_build=%s
 
 item_info_name=file

@@ -1,10 +1,10 @@
 item_info_name=title
 item_info_from=@PARAM1@
-item_info_build=EuCast - %s
+item_info_build=FlashTV - %s
 
 item_info_name=pageUrl
 item_info_from=@PARAM1@
-item_info_build=http://www.eucast.tv/embed.php?live=%s
+item_info_build=http://www.flashtv.co/embed.php?live=%s
 
 item_info_name=tmp
 item_info_from=pageUrl
@@ -12,5 +12,5 @@ item_info_convert=getInfo('%s','.*?SWFObject\(['"]([^'"]+)['"].*?['"]file['"][:,
 item_info_build=%s
 
 item_info_name=url
-item_info_from=rtmp + ' playpath=' + file + ' swfUrl=http://www.eucast.tv' + swf + ' token=%ZZri(nKa@#Z live=1 timeout=14 swfVfy=1 pageUrl=' + pageUrl
+item_info_from=rtmp + ' playpath=' + file + ' swfUrl=http://www.flashtv.co' + swf + ' live=1 token=%ZZri(nKa@#Z timeout=14 swfVfy=1 pageUrl=' + pageUrl
 item_info_build=%s

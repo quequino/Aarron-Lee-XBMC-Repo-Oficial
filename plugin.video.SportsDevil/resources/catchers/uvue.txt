@@ -4,7 +4,7 @@ item_info_build=Uvue - %s
 
 item_info_name=tmp
 item_info_from=http://uvue.de/' + @PARAM1@ + '.php
-item_info_convert=getInfo('http://uvue.de/frame1.html','.*?window.location = "([^"]+)"\;\s*\}\s*else.*','%s')
+item_info_convert=getInfo('http://uvue.de/frame.html','.*?window.location = "([^"]+)"\;\s*\}\s*else.*','%s')
 item_info_convert=getInfo('%s','.*?fid="([^"]+).*','http://uvue.de')
 item_info_build=%s
 
