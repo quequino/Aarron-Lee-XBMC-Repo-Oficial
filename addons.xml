@@ -115,7 +115,7 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
 
 <addon
   id="plugin.video.SportsDevil"
-  version="2.0.1"
+  version="2.0.2"
   name="SportsDevil-AarronLeePremium"
   provider-name="AarronLee, MaxMustermann">
   <requires>
@@ -128,8 +128,8 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
    <provides>video</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary>SportsDevil MOD 5/7/2014</summary>
-    <description>SportsDevil MOD 5/7/2014</description>
+    <summary>SportsDevil MOD 18/7/2014</summary>
+    <description>SportsDevil MOD 18/7/2014</description>
     <platform>all</platform>
   </extension>
 </addon>
@@ -285,7 +285,7 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
         <import addon="plugin.video.notfilmon" version="4.9.2"/>
         <import addon="plugin.video.ntv" version="3.2.5"/>
 		<import addon="plugin.video.p2p-streams" version="0.2.7"/>
-        <import addon="plugin.video.SportsDevil" version="1.8.6.6"/>
+        <import addon="plugin.video.SportsDevil" version="2.0.2"/>
         <import addon="repository.googlecode.anarchintosh-projects" version="1.0.1"/>
         <import addon="repository.MaxMustermann.xbmc" version="1.0.1"/>
 	    <import addon="repository.p2p-streams.xbmc" version="1.0.3"/>

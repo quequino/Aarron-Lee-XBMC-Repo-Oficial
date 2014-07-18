@@ -119,6 +119,11 @@ class JsUnpackerV2:
             in_data=data
             sPattern = '(eval\\(function\\(p,a,c,k,e,d.*)'
             enc_data=re.compile(sPattern).findall(in_data)
+            #print 'enc_data',enc_data, len(enc_data)
+            if len(enc_data)==0:
+                sPattern = '(eval\\(function\\(p,a,c,k,e,r.*)'
+                enc_data=re.compile(sPattern).findall(in_data)
+                #print 'enc_data packer...',enc_data
 
             for enc_val in enc_data:
                 unpack_val=self.unpack(enc_val)
@@ -130,7 +135,7 @@ class JsUnpackerV2:
         
         
     def containsPacked(self, data):
-        return 'p,a,c,k,e,d' in data
+        return 'p,a,c,k,e,d' in data or 'p,a,c,k,e,r' in data
         
     def unpack(self,sJavascript,iteration=1, totaliterations=1  ):
 

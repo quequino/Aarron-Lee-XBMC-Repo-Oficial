@@ -8,7 +8,7 @@ item_info_build=http://www.ucaster.eu/embedded/%s/1/600/430
 
 item_info_name=tmp
 item_info_from=pageUrl
-item_info_convert=getInfo('%s','.*SWFObject\("([^"]+\.swf)".*?["']id=(\d+)&s=([^&'"]+).*','','swf|id|channel')
+item_info_convert=getInfo('%s','.*SWFObject\("([^"]+\.swf)".*?["']id=(\d+)&s=([^&'"]+).*','@REFERER@','swf|id|channel')
 item_info_build=%s
 
 item_info_name=rtmp

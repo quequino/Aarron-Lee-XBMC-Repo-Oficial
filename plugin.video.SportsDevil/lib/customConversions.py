@@ -162,7 +162,7 @@ def getInfo(item, params, src):
     if len(paramArr) > 3:
         variables = paramArr[3].strip("'").split('|')
     common.log('Get Info from: "'+ paramPage + '" from "' + referer + '"')
-    data = common.getHTML(paramPage, referer, referer!='')
+    data = common.getHTML(paramPage, referer, referer!='',demystify=True)
     return reg.parseText(data, paramRegex, variables)
 
 

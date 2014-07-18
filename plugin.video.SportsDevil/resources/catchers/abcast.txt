@@ -2,6 +2,15 @@ item_info_name=title
 item_info_from=@PARAM1@
 item_info_build=ABCast - %s
 
-item_info_name=url
+item_info_name=pageUrl
 item_info_from=@PARAM1@
-item_info_build=rtmp://cdn.abcast.biz/liverepeat/%s swfUrl=http://abcast.biz/playercanal.swf live=true timeout=15 swfVfy=1 pageUrl=http://abcast.biz
+item_info_build=http://abcast.biz/embed.php?file=%s
+
+item_info_name=tmp
+item_info_from=pageUrl
+item_info_convert=getInfo('%s','.*?file=([^&]+).*?streamer=([^&]+).*?value="([^"]+\.swf)".*','@REFERER@','file|rtmp|swf')
+item_info_build=%s
+
+item_info_name=url
+item_info_from=rtmp + ' playpath=' + file + ' live=true timeout=15 swfVfy=true pageUrl=' + pageUrl
+item_info_build=%s

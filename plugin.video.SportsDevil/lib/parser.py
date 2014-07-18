@@ -166,6 +166,7 @@ class Parser(object):
             ignoreCache = False
             demystify = False
             startUrl = inputList.curr_url
+            #print inputList, lItem
             while count == 0 and i <= maxits:
                 if i > 1:
                     ignoreCache = True
@@ -174,6 +175,7 @@ class Parser(object):
                 # Trivial: url is from known streamer
                 items = self.__parseHtml(inputList.curr_url, '"' + inputList.curr_url + '"', inputList.rules, inputList.skill, inputList.cfg, lItem)
                 count = len(items)
+
 
                 # try to find items in html source code
                 if count == 0:
@@ -664,6 +666,10 @@ class Parser(object):
             elif command == 'camelcase':
                 src = enc.smart_unicode(src)
                 src = string.capwords(string.capwords(src, '-'))
+            elif command == 'demystify':
+                print 'demystify'
+                src = crypt.doDemystify(src)
+                print 'after demystify',src
 
             elif command == 'random':
                 paramArr = params.split(',')

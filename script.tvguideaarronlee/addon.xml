@@ -8,7 +8,7 @@
         <import addon="plugin.video.notfilmon" version="4.9.2"/>
         <import addon="plugin.video.ntv" version="3.2.5"/>
 		<import addon="plugin.video.p2p-streams" version="0.2.7"/>
-        <import addon="plugin.video.SportsDevil" version="1.8.6.6"/>
+        <import addon="plugin.video.SportsDevil" version="2.0.2"/>
         <import addon="repository.googlecode.anarchintosh-projects" version="1.0.1"/>
         <import addon="repository.MaxMustermann.xbmc" version="1.0.1"/>
 	    <import addon="repository.p2p-streams.xbmc" version="1.0.3"/>
