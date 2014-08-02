@@ -8,7 +8,7 @@ item_info_build=http://www.filmon.com/tv/channel/export?channel_id=%s
 
 item_info_name=tmp
 item_info_from=pageUrl
-item_info_convert=getInfo('%s','.*?quality":"[^"]+","url":"([^"]+).*?","name":"([^"]+).*','@REFERER@','rtmp.tmp|file.tmp')
+item_info_convert=getInfo('%s','.*?quality":"[^"]+","url":"([^"]+).*?","name":"([^"]+).*','http://www.filmon.com','rtmp.tmp|file.tmp')
 item_info_build=%s
 
 item_info_name=swf

@@ -4,7 +4,7 @@ item_info_build=MeGom - %s
 
 item_info_name=pageUrl
 item_info_from=@PARAM1@
-item_info_build=http://distro.megom.tv/player-inside.php?id=%s&width=600&height=450
+item_info_build=http://distro.megom.tv/player-inside.php?id=%s
 
 item_info_name=tmp
 item_info_from=pageUrl
@@ -32,5 +32,5 @@ item_info_convert=divide(%s, @f@)
 item_info_build=%s
 
 item_info_name=url
-item_info_from=rtmp://' + ip1 + '.' + ip2 + '.' + ip3 + '.' + ip4 + v + ' swfUrl=http://lds.megom.tv/jwplayer.flash.swf live=1 timeout=15 swfVfy=1 pageUrl=http://distro.megom.tv
+item_info_from=rtmp://' + ip1 + '.' + ip2 + '.' + ip3 + '.' + ip4 + v + ' swfUrl=http://lds.megom.tv/jwplayer.flash.swf live=1 timeout=15 swfVfy=1 pageUrl=' + pageUrl
 item_info_build=%s

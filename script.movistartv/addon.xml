@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.movistartv"
+       name="MovistarTV Add-on"
+       version="1.0.0"
+       provider-name="AarronLee">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.beautifulsoup" version="3.2.1"/>
+    <import addon="script.module.simple.downloader" version="0.9.4"/>
+    <import addon="script.module.simplejson" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Add-on para Movistar TV</summary>
+    <description>
+       Si eres abonado de MovistarTV España entonces podrás ver los stream directamente desde este addon
+    </description>
+    <platform>all</platform>
+  </extension>
+</addon>

@@ -115,7 +115,7 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
 
 <addon
   id="plugin.video.SportsDevil"
-  version="2.0.2"
+  version="2.0.3"
   name="SportsDevil-AarronLeePremium"
   provider-name="AarronLee, MaxMustermann">
   <requires>
@@ -128,8 +128,8 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
    <provides>video</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary>SportsDevil MOD 18/7/2014</summary>
-    <description>SportsDevil MOD 18/7/2014</description>
+    <summary>SportsDevil MOD 2/8/2014</summary>
+    <description>SportsDevil MOD 2/8/2014</description>
     <platform>all</platform>
   </extension>
 </addon>
@@ -256,6 +256,28 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
 		<description>The Best Third Party Addons for XBMC, .[COLOR blue]X[/COLOR]unity[COLOR blue]T[/COLOR]alk</description>
 		<platform>all</platform>
 	</extension>
+</addon>
+
+<addon id="script.movistartv"
+       name="MovistarTV Add-on"
+       version="1.0.0"
+       provider-name="AarronLee">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.beautifulsoup" version="3.2.1"/>
+    <import addon="script.module.simple.downloader" version="0.9.4"/>
+    <import addon="script.module.simplejson" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Add-on para Movistar TV</summary>
+    <description>
+       Si eres abonado de MovistarTV España entonces podrás ver los stream directamente desde este addon
+    </description>
+    <platform>all</platform>
+  </extension>
 </addon>
 
 <addon id="script.sportsdevilfixes"

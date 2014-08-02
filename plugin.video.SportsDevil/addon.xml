@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon
   id="plugin.video.SportsDevil"
-  version="2.0.2"
+  version="2.0.3"
   name="SportsDevil-AarronLeePremium"
   provider-name="AarronLee, MaxMustermann">
   <requires>
@@ -14,8 +14,8 @@
    <provides>video</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary>SportsDevil MOD 18/7/2014</summary>
-    <description>SportsDevil MOD 18/7/2014</description>
+    <summary>SportsDevil MOD 2/8/2014</summary>
+    <description>SportsDevil MOD 2/8/2014</description>
     <platform>all</platform>
   </extension>
 </addon>

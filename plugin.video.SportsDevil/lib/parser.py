@@ -666,6 +666,7 @@ class Parser(object):
             elif command == 'camelcase':
                 src = enc.smart_unicode(src)
                 src = string.capwords(string.capwords(src, '-'))
+				
             elif command == 'demystify':
                 print 'demystify'
                 src = crypt.doDemystify(src)
