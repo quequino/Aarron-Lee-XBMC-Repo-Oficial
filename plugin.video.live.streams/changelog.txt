@@ -1,6 +1,2 @@
-Version 1.2.0
-Cloned from divingmules and added all my changes
-
-
-Version 1.1.3
-update for XBMC Gotham compatibility
+Version 5.0.0
+Primera Versión de DigiTele Player

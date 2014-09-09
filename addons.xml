@@ -16,40 +16,23 @@
 </addon>
 
 <addon id="plugin.video.live.streams"
-       name="LiveStreams-AarronLee"
-       version="4.0.0"
+       name="DigiTele Player"
+       version="5.0.0"
        provider-name="AarronLee, Shani">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
     <import addon="script.module.beautifulsoup" version="3.2.1"/>
-    <import addon="script.module.simple.downloader" version="0.9.4"/>
+    <import addon="script.module.simple.downloader" version="1.9.4"/>
     <import addon="script.module.simplejson" />
   </requires>
   <extension point="xbmc.python.pluginsource" library="default.py">
     <provides>video</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary>LiveStreams para TVGuideAarronLee Premium</summary>
+    <summary>Reproductor para DIGITELE</summary>
     <description>
-       Ver 9streams, freelive.tv, flashstreaming etc con está nueva versión de LiveStreams exlusivo para TVGuideAarronLee
+       Reproductor de video para reproducir los canales premium de DigiTele España
     </description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="plugin.video.LiveTV" name="LiveTV-AarronLee" version="2.1" provider-name="Aarron Lee, Mikey1234">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-	<import addon="script.module.beautifulsoup" version="3.0.8"/>
-    <import addon="script.module.simplejson" version="2.0.10"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource"
-            library="default.py">
-        <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>LiveTV</summary>
-    <description>LiveTV lets you add streams by adding items to an xml file.</description>
     <platform>all</platform>
   </extension>
 </addon>
@@ -258,25 +241,56 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
 	</extension>
 </addon>
 
-<addon id="script.movistartv"
-       name="MovistarTV Add-on"
-       version="1.0.0"
-       provider-name="AarronLee">
+<addon id="script.module.beautifulsoup"
+       name="BeautifulSoup"
+       version="3.2.1"
+       provider-name="Leonard Richardson (leonardr@segfault.org)">
+  <requires>
+    <import addon="xbmc.python"
+    		version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.module"
+             library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary>HTML/XML parser for quick-turnaround applications like screen-scraping</summary>
+    <description>Beautiful Soup parses arbitrarily invalid SGML and provides a variety of methods and Pythonic idioms for iterating and searching the parse tree.</description>
+    <license>BSD</license>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="script.module.simple.downloader" name="Simple Downloader for xbmc plugins" provider-name="TheCollective" version="1.9.4">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+    <import addon="script.common.plugin.cache" version="2.5.0" />
+    <import addon="script.module.parsedom" version="2.5.1" />
+  </requires>
+  <extension library="default.py" point="xbmc.service" />
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">Simple downloader for xbmc plugins.</summary>
+  </extension>
+  <extension library="lib" point="xbmc.python.module" />
+</addon>
+
+<addon id="script.module.simplejson"
+       name="simplejson"
+       version="3.3.0"
+       provider-name="Martijn">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="script.module.beautifulsoup" version="3.2.1"/>
-    <import addon="script.module.simple.downloader" version="0.9.4"/>
-    <import addon="script.module.simplejson" />
   </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-    <provides>video</provides>
-  </extension>
+  <extension point="xbmc.python.module"
+             library="lib" />
   <extension point="xbmc.addon.metadata">
-    <summary>Add-on para Movistar TV</summary>
-    <description>
-       Si eres abonado de MovistarTV España entonces podrás ver los stream directamente desde este addon
-    </description>
     <platform>all</platform>
+    <language></language>
+    <summary lang="en">Simple, fast, extensible JSON encoder/decoder for Python</summary>
+    <description lang="en">Simple, fast, extensible JSON encoder/decoder for Python</description>
+    <disclaimer lang="en">Code taken from https://pypi.python.org/pypi/simplejson/</disclaimer>
+    <license>MIT License, Academic Free License v. 2.1</license>
+    <website>https://pypi.python.org/pypi/simplejson/</website>
+    <source>https://pypi.python.org/pypi/simplejson/</source>
   </extension>
 </addon>
 
