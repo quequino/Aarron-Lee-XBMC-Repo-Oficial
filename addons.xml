@@ -17,7 +17,7 @@
 
 <addon id="plugin.video.live.streams"
        name="DigiTele Player"
-       version="5.0.0"
+       version="5.0.1"
        provider-name="AarronLee, Shani">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
