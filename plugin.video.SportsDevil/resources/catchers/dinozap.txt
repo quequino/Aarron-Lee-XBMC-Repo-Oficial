@@ -4,12 +4,16 @@ item_info_build=DinoZap - %s
 
 item_info_name=pageUrl
 item_info_from=@PARAM1@
-item_info_build=http://www.dinozap.tv/redirect/channel.php?id=%s&width=640&height=490&autostart=true
+item_info_build=http://www.dinozap.com/redirect/channel.php?id=%s&width=640&height=490&autostart=true
 
 item_info_name=pageUrl.tmp
 item_info_from=pageUrl
 item_info_convert=getInfo('%s','.*<iframe src="([^"]+)".*','@REFERER@')
+item_info_convert=debug
 item_info_convert=quote('%s')
+item_info_convert=replace('%s','geo','www')
+item_info_convert=replace('%s','_country','')
+item_info_convert=replace('%s','embed','redirect/embedredi')
 item_info_convert=getInfo('%s','.*?id="ssx1" value="([^'"]+).*?id="ssx4" value="([^'"]+).*','@pageUrl@','ssx1|ssx4')
 item_info_build=%s
 

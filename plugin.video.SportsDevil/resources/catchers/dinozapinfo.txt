@@ -1,10 +1,10 @@
 item_info_name=title
 item_info_from=@PARAM1@
-item_info_build=MaxHdOnline - %s
+item_info_build=DinoZapInfo - %s
 
 item_info_name=pageUrl
 item_info_from=@PARAM1@
-item_info_build=http://www.maxhdonline.com/channel.php?file=%s&width=640&height=460&autostart=true
+item_info_build=http://www.dinozap.info/redirect/channel.php?id=%s&width=640&height=360&autostart=true
 
 item_info_name=pageUrl.tmp
 item_info_from=pageUrl
@@ -35,7 +35,7 @@ item_info_convert=parseText('%s','.*rtmp://[\.\w:]*/([^"']+)')
 item_info_build=%s
 
 item_info_name=url
-item_info_from=rtmp + ' app=' + app + ' playpath=' + file + ' swfUrl=http://www.hdmytv.com/jwplayer5/addplayer/jwplayer.flash.swf live=true flashver=WIN\202011,9,900,117 token=@@stop-stole@@ timeout=15 pageUrl=http://www.maxhdonline.com
+item_info_from=rtmp + ' app=' + app + ' playpath=' + file + ' swfUrl=http://www.hdmytv.com/jwplayer5/addplayer/jwplayer.flash.swf live=true flashver=WIN\202011,9,900,117 token=@@stop-stole@@ timeout=15 pageUrl=http://www.dinozap.info 
 item_info_build=%s
 
 ##ro%g0#r@1

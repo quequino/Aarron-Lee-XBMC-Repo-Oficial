@@ -2,10 +2,15 @@ item_info_name=title
 item_info_from=@PARAM1@
 item_info_build=HdCast - %s
 
-item_info_name=url
+item_info_name=pageUrl
 item_info_from=@PARAM1@
-item_info_build=rtmp://195.154.220.115:1935/private/%s swfUrl=http://www.hdcast.org/players.swf token=Fo5_n0w?U.rA6l3-70w47ch timeout=15 swfVfy=1 pageUrl=http://www.hdcast.org
+item_info_build=http://www.hdcast.org/embedlive2.php?u=%s&vw=854&vh=480
 
-#rtmpe://46.246.124.28:1935/redirect
-#rtmpe://rtmp.hdcast.org:1935/redirect
-#rtmpe://cp77659.live.edgefcs.net/live
+item_info_name=tmp
+item_info_from=pageUrl
+item_info_convert=getInfo('%s','.*?file:\s*["']([^'"]+).*','@REFERER@','rtmp)
+item_info_build=%s
+
+item_info_name=url
+item_info_from=rtmp +' swfUrl=http://www.hdcast.org/j2/jwplayer.flash.swf token=#yw%tt#w@kku live=1 timeout=14 swfVfy=1 pageUrl=' + pageUrl
+item_info_build=%s

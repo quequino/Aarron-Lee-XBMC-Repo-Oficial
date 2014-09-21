@@ -23,7 +23,7 @@ item_info_build=%s
 
 
 item_info_name=url
-item_info_from=rtmp + '' + file + ' swfUrl=http://xuscacamusca.se/MzhlNzQyMjQzODA1YWZlZWRiOWI1MDdk/jwplayer.flash.swf live=1 timeout=15 swfVfy=1 pageUrl=' + pageUrl
+item_info_from=rtmp + '' + file + ' swfUrl=http://res.xuscacamusca.se/YjVmZTBmOTQ5ZTkzYTBlNzkzNTRhMWE0/jwplayer.flash.swf live=1 timeout=15 swfVfy=1 pageUrl=' + pageUrl
 item_info_build=%s
 
 

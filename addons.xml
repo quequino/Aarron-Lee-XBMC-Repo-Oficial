@@ -98,8 +98,8 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
 
 <addon
   id="plugin.video.SportsDevil"
-  version="2.0.4"
-  name="SportsDevil-AarronLeePremium"
+  version="3.0.0"
+  name="DigiTele Sports"
   provider-name="AarronLee, MaxMustermann">
   <requires>
    <import addon="xbmc.python" version="2.1.0"/>
@@ -111,8 +111,8 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
    <provides>video</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary>SportsDevil MOD 13/8/2014</summary>
-    <description>SportsDevil MOD 13/8/2014</description>
+    <summary>DigiTele Sports</summary>
+    <description>Add-on para ver los canales deportivos de DigiTele (vip racing 1-2-3-4-5-6-7-8)</description>
     <platform>all</platform>
   </extension>
 </addon>

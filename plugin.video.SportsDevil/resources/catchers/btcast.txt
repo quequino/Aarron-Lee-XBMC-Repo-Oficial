@@ -1,10 +1,10 @@
 item_info_name=title
 item_info_from=@PARAM1@
-item_info_build=UKCast - %s
+item_info_build=BTCast - %s
 
 item_info_name=pageUrl
 item_info_from=@PARAM1@
-item_info_build=http://www.ukcast.co/pvt/embed.php?u=%s
+item_info_build=http://www.btcast.in/pvt/embed.php?u=%s
 
 item_info_name=swf
 item_info_from=pageUrl
@@ -20,7 +20,3 @@ item_info_build=%s
 item_info_name=url
 item_info_from=rtmpe://62.210.131.54/redirect playpath=' + @PARAM1@ + ' swfUrl=' + swf + ' live=1 timeout=15 swfVfy=1 pageUrl=' + pageUrl
 item_info_build=%s
-
-#rtmpe://178.18.31.63/redirect
-#rtmpe://strm.ukcast.tv/redirect
-#rtmpe://cdn.ukcast.tv/redirect
