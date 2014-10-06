@@ -12,7 +12,7 @@ def CheckIdle(maxIdle):
     delay = 60
     count = delay
     dp = xbmcgui.DialogProgress()
-    dp.create("TV Guide Dixie","Streaming will automatically quit in %d seconds" % count, "Press Cancel to contine viewing")
+    dp.create("DigiTele TV","Streaming will automatically quit in %d seconds" % count, "Press Cancel to contine viewing")
     dp.update(0)
               
     while xbmc.Player().isPlaying() and count > 0 and not dp.iscanceled():
@@ -70,6 +70,11 @@ def checkForAlternateStreaming(url):
         
     if 'plugin.video.itv' in url:
         print '****** Alternate ITV ******'
+        print url
+        return alternateStream(url)
+		
+    if 'plugin.video.digiteleplayerpremium' in url:
+        print '****** Alternate DigiTele Player ******'
         print url
         return alternateStream(url)
         
