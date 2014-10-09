@@ -1,3 +1,6 @@
+v5.2.1
+Repo Fix
+
 v5.2.0
 Unos arreglos
 Nuevo Skin
