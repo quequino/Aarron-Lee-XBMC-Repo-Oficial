@@ -938,18 +938,18 @@ class DIGITELESource(Source):
     KEY = 'digitele'
      
     def GetDigiteleUrl(self):
-        aarronleeUrl = self.aarronleeUrl.upper()
+        digiteleUrl = self.digiteleUrl.upper()
 
-        if aarronleeUrl == 'PAQUETE TOTAL':
+        if digiteleUrl == 'PAQUETE TOTAL':
             return 'http://www.digitele.es/pluginfiles/guide.xml'
 
-        if aarronleeUrl == 'DIGITAL+ - TDT':
+        if digiteleUrl == 'DIGITAL+ - TDT':
             return 'http://www.digitele.es/pluginfiles/guide-spain.xml'
 			
-        if aarronleeUrl == 'DEPORTES':
+        if digiteleUrl == 'DEPORTES':
             return 'http://www.digitele.es/pluginfiles/guide-deportes.xml'
 			
-        if aarronleeUrl == 'SKYDIGITAL UK':
+        if digiteleUrl == 'SKYDIGITAL UK':
             return 'http://www.digitele.es/pluginfiles/guide-uk.xml'
 			
 
@@ -961,7 +961,7 @@ class DIGITELESource(Source):
         if os.path.exists(logos):
             self.logoFolder = logos
         self.digiteleUrl = addon.getSetting('digitele.url')
-        self.KEY += '.' + self.aarronleeUrl.upper()
+        self.KEY += '.' + self.digiteleUrl.upper()
         self.xml = None
         #SJP store GMT offset from settings
         gmt = addon.getSetting('gmtfrom').replace('GMT', '')
@@ -975,7 +975,7 @@ class DIGITELESource(Source):
         categories = self.getCategories()
    
         if not self.xml:
-            self.xml = self._downloadUrl(self.GetAarronleeUrl())
+            self.xml = self._downloadUrl(self.GetDigiteleUrl())
             self.xml = self.xml.replace('English Premier League', 'EPL')
             self.xml = self.xml.replace('Scotish Premier League', 'SPL')
             self.xml = self.xml.replace("&amp;apos;", "'")

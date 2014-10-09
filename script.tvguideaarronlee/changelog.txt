@@ -1,3 +1,6 @@
+v5.2.2
+Bug Fix
+
 v5.2.1
 Repo Fix
 
