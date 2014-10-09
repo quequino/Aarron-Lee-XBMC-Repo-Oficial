@@ -224,6 +224,10 @@ msgctxt "#30308"
 msgid "Quit"
 msgstr "Salir"
 
+msgctxt "#30318"
+msgid "VPN"
+msgstr "VPN"
+
 msgctxt "#30500"
 msgid "[B]Edit channel order and visibility[/B]"
 msgstr "[B]Modificar el orden de los canales y la visibilidad [/B]"

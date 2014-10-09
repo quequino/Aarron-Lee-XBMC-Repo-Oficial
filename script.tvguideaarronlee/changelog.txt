@@ -1,3 +1,6 @@
+v5.2.4
+Skin FIX
+
 v5.2.3
 Minor Bug Fix
 
