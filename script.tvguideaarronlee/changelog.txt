@@ -1,3 +1,8 @@
+v5.2.0
+Unos arreglos
+Nuevo Skin
+Cambio de Servidor
+
 v5.1.6
 Bug FIX
 

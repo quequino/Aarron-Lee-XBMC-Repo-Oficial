@@ -28,8 +28,8 @@ xbmc.Player().stop
 
 ADDON       = xbmcaddon.Addon(id = 'script.tvguideaarronlee')
 HOME        = ADDON.getAddonInfo('path')
-TITLE       = 'TV Guide AarronLee Premium'
-VERSION     = '5.1.11'
+TITLE       = 'DigiTele TV España'
+VERSION     = '5.2.0'
 addon       = xbmcaddon.Addon()
 addonid     = addon.getAddonInfo('id')
 versioninfo = addon.getAddonInfo('version')
@@ -39,12 +39,12 @@ profilepath = os.path.join(xbmc.translatePath('special://profile'), '')
 default_ini = os.path.join(addonpath, 'addons.ini')
 local_ini   = os.path.join(addonpath, 'local.ini')
 current_ini = os.path.join(datapath, 'addons.ini')
-fav_xml     = os.path.join(profilepath,'favourites-aarronlee.xml')
+fav_xml     = os.path.join(profilepath,'favourites-digiteletv.xml')
 cats        = ADDON.getSetting('categories')
 oss         = 'OffSide Streams'
 stvb        = 'StreamTVBox'
 
-print '****** TV GUIDE AARRONLEE INFORMATION ******'
+print '****** DIGITELE TV INFORMATION ******'
 print addonid, versioninfo
 
 
@@ -55,9 +55,9 @@ def CheckVersion():
     if prev == curr:
         return
 
-    if prev == '4.1':
+    if prev == '5.1.11':
         d = xbmcgui.Dialog()
-        d.ok(TITLE + ' - ' + VERSION, 'Si necesitas ayuda, actualizaciones y/o mas informacion...' , '[COLOR FF00FF00]www.tvguideaarronlee.com[/COLOR]',  'Gracias por usar la version premium.')
+        d.ok(TITLE + ' - ' + VERSION, 'Si necesitas ayuda, actualizaciones y/o mas informacion...' , '[COLOR FF00FF00]www.digitele.es[/COLOR]',  'Gracias por usar la version premium.')
 
     ADDON.setSetting('VERSION', curr)
 
@@ -102,7 +102,7 @@ except:
 
 path = fav_xml
 try:
-    url = 'http://www.tvguideaarronlee.com/pluginfiles/favourites-aarronlee.xml'
+    url = 'http://www.digitele.es/pluginfiles/favourites-digiteletv.xml'
     urllib.urlretrieve(url, path)
 except:
     pass
@@ -124,7 +124,7 @@ import buggalo
 import gui
 
 
-buggalo.GMAIL_RECIPIENT = 'tvguideaarronlee@gmail.com'
+buggalo.GMAIL_RECIPIENT = 'digiteletv@gmail.com'
 
 
 try:

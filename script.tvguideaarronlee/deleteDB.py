@@ -37,9 +37,9 @@ def delete_file(filename):
 if __name__ == '__main__':
     if deleteDB():
         d = xbmcgui.Dialog()
-        d.ok('TV Guide Aarron Lee', 'Base de Datos borrado.', 'Reinicia el plugin')    
+        d.ok('DigiTele TV', 'Base de Datos borrado.', 'Reinicia el plugin')    
     else:
         d = xbmcgui.Dialog()
-        d.ok('TV Guide Aarron Lee', 'Error en borrar base de datos.', 'Database may be locked,', 'please restart XBMC and try again')    
+        d.ok('DigiTele TV', 'Error en borrar base de datos.', 'Database may be locked,', 'please restart XBMC and try again')    
 
 

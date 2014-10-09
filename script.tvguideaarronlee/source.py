@@ -35,24 +35,24 @@ import xbmcvfs
 import sqlite3
 
 SOURCE     = ADDON.getSetting('source')
-AARRONLEELOGOS = ADDON.getSetting('aarronlee.logo.folder')
+DIGITELELOGOS = ADDON.getSetting('digitele.logo.folder')
 XMLTVLOGOS = ADDON.getSetting('xmltv.logo.folder')
 datapath   = xbmc.translatePath(ADDON.getAddonInfo('profile'))
 extras     = os.path.join(datapath, 'extras')
 logopath   = os.path.join(extras, 'logos')
 logos      = None
 
-if SOURCE == 'AARRONLEE':
-    logos = os.path.join(logopath, AARRONLEELOGOS)
+if SOURCE == 'DIGITELE':
+    logos = os.path.join(logopath, DIGITELELOGOS)
 else:
     logos = XMLTVLOGOS
 
-print '****** TV GUIDE AARRONLEE INFORMATION ******'
+print '****** DIGITELE TV INFORMATION ******'
 print '*************** LOGO PACK **************'
 print logos
 
 
-SETTINGS_TO_CHECK = ['source', 'xmltv.file', 'xmltv.logo.folder', 'aarronlee.url', 'aarronlee.logo.folder', 'gmtfrom', 'categories.xml']
+SETTINGS_TO_CHECK = ['source', 'xmltv.file', 'xmltv.logo.folder', 'digitele.url', 'digitele.logo.folder', 'gmtfrom', 'categories.xml']
 
 class Channel(object):
     #SJP1 categories parameter moved to end
@@ -934,23 +934,23 @@ def ttTTtt(i, t1, t2=[]):
 	return t        
         
 
-class AARRONLEESource(Source):
-    KEY = 'aarronlee'
+class DIGITELESource(Source):
+    KEY = 'digitele'
      
-    def GetAarronleeUrl(self):
+    def GetDigiteleUrl(self):
         aarronleeUrl = self.aarronleeUrl.upper()
 
         if aarronleeUrl == 'PAQUETE TOTAL':
-            return 'http://www.tvguideaarronlee.com/pluginfiles/guide.xml'
+            return 'http://www.digitele.es/pluginfiles/guide.xml'
 
         if aarronleeUrl == 'DIGITAL+ - TDT':
-            return 'http://www.tvguideaarronlee.com/pluginfiles/guide-spain.xml'
+            return 'http://www.digitele.es/pluginfiles/guide-spain.xml'
 			
         if aarronleeUrl == 'DEPORTES':
-            return 'http://www.tvguideaarronlee.com/pluginfiles/guide-deportes.xml'
+            return 'http://www.digitele.es/pluginfiles/guide-deportes.xml'
 			
         if aarronleeUrl == 'SKYDIGITAL UK':
-            return 'http://www.tvguideaarronlee.com/pluginfiles/guide-uk.xml'
+            return 'http://www.digitele.es/pluginfiles/guide-uk.xml'
 			
 
 
@@ -960,7 +960,7 @@ class AARRONLEESource(Source):
         self.logoFolder = None
         if os.path.exists(logos):
             self.logoFolder = logos
-        self.aarronleeUrl = addon.getSetting('aarronlee.url')
+        self.digiteleUrl = addon.getSetting('digitele.url')
         self.KEY += '.' + self.aarronleeUrl.upper()
         self.xml = None
         #SJP store GMT offset from settings
@@ -995,7 +995,7 @@ class AARRONLEESource(Source):
     def getCategories(self):
         cat  = dict()
         path = os.path.join(datapath, 'cats.xml')
-        url = 'http://www.tvguideaarronlee.com/pluginfiles/cats.xml'
+        url = 'http://www.digitele.es/pluginfiles/cats.xml'
         f = urllib2.urlopen(url, timeout=30)
         xml = f.read()
         f.close()
@@ -1122,7 +1122,7 @@ class FileWrapper(object):
 def instantiateSource():
     SOURCES = {
                'XMLTV' : XMLTVSource,
-        'AARRONLEE' : AARRONLEESource
+        'DIGITELE' : DIGITELESource
     }
 
     try:

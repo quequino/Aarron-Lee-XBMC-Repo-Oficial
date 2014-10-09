@@ -7,12 +7,12 @@ datapath = xbmc.translatePath(ADDON.getAddonInfo('profile'))
 Path=os.path.join(datapath,'extras')
 try: os.makedirs(Path)
 except: pass
-Url = 'http://www.tvguideaarronlee.com/pluginfiles/logos.zip'
+Url = 'http://www.digitele.es/pluginfiles/logos.zip'
 LocalName = 'logos.zip'
 LocalFile = xbmc.translatePath(os.path.join(Path, LocalName))
 dialog.update(33)
 try: urllib.urlretrieve(Url,LocalFile)
-except:xbmc.executebuiltin("XBMC.Notification(TV Guide AarronLee,Error descargando logos,3000)")
+except:xbmc.executebuiltin("XBMC.Notification(DigiTele TV,Error descargando logos,3000)")
 dialog.update(66)
 if os.path.isfile(LocalFile):
     extractFolder = Path
@@ -21,6 +21,6 @@ if os.path.isfile(LocalFile):
     dialog.update(100)
     dialog.close()
     ok = xbmcgui.Dialog()
-    ok.ok('TV Guide AarronLee', 'Logos descargados!')
+    ok.ok('DigiTele TV', 'Logos descargados!')
 try:os.remove(LocalFile)
 except:pass

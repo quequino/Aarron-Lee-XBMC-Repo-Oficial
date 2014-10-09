@@ -37,8 +37,8 @@ import shutil
 
 ADDON        = xbmcaddon.Addon(id = 'script.tvguideaarronlee')
 MASHMODE     = (ADDON.getSetting('mashmode') == 'true')
-SKIN         = ADDON.getSetting('aarronlee.skin')
-SKINSVERSION = '2'
+SKIN         = ADDON.getSetting('digitele.skin')
+SKINSVERSION = '4'
 datapath     = xbmc.translatePath(ADDON.getAddonInfo('profile'))
 extras       = os.path.join(datapath, 'extras')
 skinfolder   = os.path.join(datapath, extras, 'skins')
@@ -75,11 +75,11 @@ try:
         import urllib, dxmnew
         try: os.makedirs(Path)
         except: pass
-        Url  = 'http://www.tvguideaarronlee.com/pluginfiles/skins-update.zip'
+        Url  = 'http://www.digitele.es/pluginfiles/skins-update.zip'
         LocalName = 'skins.zip'
         LocalFile = xbmc.translatePath(os.path.join(Path, LocalName))
         try: urllib.urlretrieve(Url,LocalFile)
-        except:xbmc.executebuiltin("XBMC.Notification(TV Guide AarronLee,Error Descargando Skin,3000)")
+        except:xbmc.executebuiltin("XBMC.Notification(DigiTele TV,Error Descargando Skin,3000)")
         if os.path.isfile(LocalFile):
             print '********* SKINS ARE INSTALLING *********'
             extractFolder = Path
@@ -101,11 +101,11 @@ try:
             import urllib, dxmnew
             try: os.makedirs(Path)
             except: pass
-            Url  = 'http://www.tvguideaarronlee.com/pluginfiles/skins-update.zip'
+            Url  = 'http://www.digitele.es/pluginfiles/skins-update.zip'
             LocalName = 'skins.zip'
             LocalFile = xbmc.translatePath(os.path.join(Path, LocalName))
             try: urllib.urlretrieve(Url,LocalFile)
-            except:xbmc.executebuiltin("XBMC.Notification(TV Guide Aarron Lee,Error Descargando Skin,3000)")
+            except:xbmc.executebuiltin("XBMC.Notification(DigiTele TV,Error Descargando Skin,3000)")
             if os.path.isfile(LocalFile):
                 print '********** SKINS ARE UPDATING **********'
                 extractFolder = Path
