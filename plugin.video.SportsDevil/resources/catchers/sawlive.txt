@@ -1,10 +1,10 @@
 item_info_name=title
 item_info_from=@PARAM1@
-item_info_build=SawLive - %s
+item_info_build=SawLive
 
 item_info_name=pageUrl
 item_info_from=@PARAM1@
-item_info_convert=getInfo('http://www.sawlive.tv/embed/%s','.*src=['"]([^'"]+)['"].*','@REFERER@')
+item_info_convert=getInfo('%s','.*src=['"]([^'"]+)['"].*','@REFERER@')
 item_info_build=%s
 
 item_info_name=tmp

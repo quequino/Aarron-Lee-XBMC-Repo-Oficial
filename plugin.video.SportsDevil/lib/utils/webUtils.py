@@ -68,9 +68,9 @@ class BaseRequest(object):
         decorated = self.ErrorDecorator(request)
         return decorated()
     
-    def _getRequest(self, url, headers):
+    def _getRequest(self, url, form_data, headers):
         def request():
-            return self.net.http_GET(url, headers).content
+            return self.net._fetch(url, form_data, headers).content
         self.url = url
         decorated = self.ErrorDecorator(request)
         return decorated()
@@ -79,12 +79,12 @@ class BaseRequest(object):
         self.url = url
         return self._headRequest(url)
     
-    def getSource(self, url, referer):
+    def getSource(self, url, form_data, referer):
         url = urllib.unquote_plus(url)
         if not referer:
             referer = url
         headers = {'Referer': referer}
-        response  = self._getRequest(url, headers)
+        response  = self._getRequest(url, form_data, headers)
         if response:
             if self.cookie_file:
                 self.net.save_cookies(self.cookie_file)
@@ -97,8 +97,8 @@ class DemystifiedWebRequest(BaseRequest):
     def __init__(self, cookiePath):
         super(DemystifiedWebRequest,self).__init__(cookiePath)
 
-    def getSource(self, url, referer='', demystify=False):
-        data = super(DemystifiedWebRequest, self).getSource(url, referer)
+    def getSource(self, url, form_data, referer='', demystify=False):
+        data = super(DemystifiedWebRequest, self).getSource(url, form_data, referer)
         if not data:
             return None
 
@@ -142,12 +142,12 @@ class CachedWebRequest(DemystifiedWebRequest):
         url = getFileContent(self.lastUrlPath)
         return url
 
-    def getSource(self, url, referer='', ignoreCache=False, demystify=False):
+    def getSource(self, url, form_data, referer='', ignoreCache=False, demystify=False):
 
         if url == self.getLastUrl() and not ignoreCache:
             data = self.__getCachedSource()
         else:
-            data = enc.smart_unicode(super(CachedWebRequest,self).getSource(url, referer, demystify))
+            data = enc.smart_unicode(super(CachedWebRequest,self).getSource(url, form_data, referer, demystify))
             if data:
                 # Cache url
                 self.__setLastUrl(url)

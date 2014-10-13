@@ -1,6 +1,7 @@
 # -*- coding: latin-1 -*-
 
 import urllib
+import urlparse
 import re, datetime
 
 
@@ -117,7 +118,7 @@ def getSource(params, src):
         paramPage = params.strip('\',\'')
 
     paramPage = paramPage.replace('%s', src)
-    return common.getHTML(paramPage,paramReferer)
+    return common.getHTML(paramPage, None, paramReferer)
 
 
 def parseText(item, params, src):
@@ -153,6 +154,7 @@ def getInfo(item, params, src):
         paramRegex = item.getInfo(paramRegex.strip('@'))
         
     referer = ''
+    form_data = ''
     variables=[]
     if len(paramArr) > 2:
         referer = paramArr[2]
@@ -162,7 +164,15 @@ def getInfo(item, params, src):
     if len(paramArr) > 3:
         variables = paramArr[3].strip("'").split('|')
     common.log('Get Info from: "'+ paramPage + '" from "' + referer + '"')
-    data = common.getHTML(paramPage, referer, referer!='',demystify=True)
+
+    try:
+        parts = (paramPage.split('|', 1) + [None] * 2)[:2]
+        paramPage, form_data = parts
+        form_data = urlparse.parse_qsl(form_data)
+    except: 
+        pass
+
+    data = common.getHTML(paramPage, form_data, referer, referer!='',demystify=True)
     return reg.parseText(data, paramRegex, variables)
 
 

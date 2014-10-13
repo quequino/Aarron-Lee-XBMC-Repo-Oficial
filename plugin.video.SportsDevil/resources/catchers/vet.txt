@@ -4,7 +4,7 @@ item_info_build=Vet - %s
 
 item_info_name=pageUrl
 item_info_from=@PARAM1@
-item_info_build=http://fightnightaddons.96.lt/tools/veet.php?id=%s
+item_info_build=http://fightnightaddons2.96.lt/tools/veet.php?id=%s
 
 item_info_name=id
 item_info_from=pageUrl

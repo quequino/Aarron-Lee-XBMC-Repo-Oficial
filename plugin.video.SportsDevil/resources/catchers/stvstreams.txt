@@ -12,5 +12,5 @@ item_info_convert=getInfo('%s','.*?script src="embed([^.]+).*','@REFERER@')
 item_info_build=%s
 
 item_info_name=url
-item_info_from=rtmp://5.135.73.66:1935/redirect playpath=' + @PARAM1@ + '.stream swfUrl=http://stvstreams.com/jwplayer/jwplayer.flash.swf live=1 timeout=14 swfVfy=1 pageUrl=http://stvstreams.com/
+item_info_from=rtmp://5.135.73.66:1935/redirect playpath=' + @PARAM1@ + ' swfUrl=http://stvstreams.com/jwnew/jwplayer.flash.swf live=1 timeout=14 swfVfy=1 pageUrl=http://stvstreams.com/
 item_info_build=%s

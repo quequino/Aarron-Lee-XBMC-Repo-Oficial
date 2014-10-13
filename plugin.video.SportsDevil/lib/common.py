@@ -71,15 +71,15 @@ def showOSK(defaultText='', title='', hidden=False):
 from utils.regexUtils import parseTextToGroups
 from utils.webUtils import CachedWebRequest
 
-def getHTML(url, referer='', ignoreCache=False, demystify=False):
+def getHTML(url, form_data='', referer='', ignoreCache=False, demystify=False):
     cookiePath = xbmc.translatePath(os.path.join(Paths.cacheDir, 'cookies.lwp'))
     request = CachedWebRequest(cookiePath, Paths.cacheDir)
-    return request.getSource(url, referer, ignoreCache, demystify)
+    return request.getSource(url, form_data, referer, ignoreCache, demystify)
 
 
 def parseWebsite(source, regex, referer='', variables=[]):
     def parseWebsiteToGroups(url, regex, referer=''):
-        data = getHTML(url, referer)
+        data = getHTML(url, None, referer)
         return parseTextToGroups(data, regex)
 
     groups = parseWebsiteToGroups(source, regex, referer)

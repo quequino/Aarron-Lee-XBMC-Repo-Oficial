@@ -182,7 +182,7 @@ class Parser(object):
                     referer = ''
                     if lItem['referer']:
                         referer = lItem['referer']
-                    data = common.getHTML(inputList.curr_url, referer, ignoreCache, demystify)
+                    data = common.getHTML(inputList.curr_url, None, referer, ignoreCache, demystify)
                     if data == '':
                         return False
 
@@ -223,10 +223,10 @@ class Parser(object):
                         streamId = firstJS[0]
                         jsUrl = firstJS[1]
                         streamerName = getHostName(jsUrl)
-                        jsSource = getHTML(jsUrl, startUrl, True, False)
+                        jsSource = getHTML(jsUrl, None, startUrl, True, False)
                         phpUrl = findPHP(jsSource, streamId)
                         if phpUrl:
-                            data = getHTML(phpUrl, startUrl, True, True)
+                            data = getHTML(phpUrl, None, startUrl, True, True)
                             item = self.__findRTMP(data, phpUrl, lItem)
                             if item:
                                 
@@ -248,7 +248,7 @@ class Parser(object):
                         swfUrl = vcods[3]
                         unixTS = str(dt.getUnixTimestamp())
                         sUrl = sUrl + '?callback=jQuery1707757964063647694_1347894980192&v_cod1=' + cod1 + '&v_cod2=' + cod2 + '&_=' + unixTS
-                        tmpData = getHTML(sUrl, urllib.unquote_plus(startUrl), True, False)
+                        tmpData = getHTML(sUrl, None, urllib.unquote_plus(startUrl), True, False)
                         if tmpData and tmpData.find("Bad Request") == -1:
                             newReg = '"result1":"([^\"]+)","result2":"([^\"]+)"'
                             link = regexUtils.findall(tmpData, newReg)
@@ -319,7 +319,7 @@ class Parser(object):
 
 
     def __findRedirect(self, page, referer='', demystify=False):
-        data = common.getHTML(page, referer = referer, demystify = demystify)
+        data = common.getHTML(page, None, referer = referer, demystify = demystify)
 
         link = findVideoFrameLink(page, data)
         if link:

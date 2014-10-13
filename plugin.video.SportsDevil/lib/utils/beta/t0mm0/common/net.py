@@ -48,8 +48,8 @@ class Net:
     
     _cj = cookielib.LWPCookieJar()
     _proxy = None
-    _user_agent = 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/535.1 ' + \
-                  '(KHTML, like Gecko) Chrome/13.0.782.99 Safari/535.1'
+    _user_agent = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 ' + \
+                  '(KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36'
     _http_debug = False
     
     
