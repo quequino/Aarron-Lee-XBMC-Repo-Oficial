@@ -9,7 +9,10 @@ import xbmcaddon
 selfAddon = xbmcaddon.Addon()
 
 #HEADER_REFERER = 'http://www.teledunet.com/'
-HEADER_REFERER = 'http://www.teledunet.com/list_chaines.php'
+#HEADER_REFERER = 'http://www.teledunet.com/list_chaines.php'
+HEADER_REFERER = 'http://www.teledunet.com/'
+TELEDUNET_CHANNEL_PAGE = 'http://www.teledunet.com/mobile/?con'
+
 HEADER_HOST = 'www.teledunet.com'
 HEADER_USER_AGENT = 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'
 TELEDUNET_TIMEPLAYER_URL = 'http://www.teledunet.com/mobile/?con'
@@ -23,9 +26,11 @@ def _get(request,post=None):
     """Performs a GET request for the given url and returns the response"""
     return opener.open(request,post).read()
 
-def _html(url):
+def _html(url, rheaders=None):
     """Downloads the resource at the given url and parses via BeautifulSoup"""
     headers = { "User-Agent": HEADER_USER_AGENT  }
+    if rheaders:
+        headers.update(rheaders);
     request = urllib2.Request (url , headers = headers)
     return BeautifulSoup(_get(request), convertEntities=BeautifulSoup.HTML_ENTITIES)
 
@@ -71,15 +76,16 @@ def __get_channel_time_player(channel_name):
     req.add_header('Cookie', __get_cookie_session())
 
     html = _get(req)
-    m = re.search('aut=\'\?id0=(.*?)\'', html, re.M | re.I)
-    time_player_str = eval(m.group(1))
-
+    #m = re.search('aut=\'\?id0=(.*?)\'', html, re.M | re.I)
+    #time_player_str = eval(m.group(1))
+    match =re.findall('aut=\'\?id0=(.*?)\'', html)
+    time_player_str=str(long(float(match[0])))
     
     #print 'set_favoris\(\''+channel_name+'\'.*?rtmp://(.*?)\''
     m = re.search('rtmp://(.*?)/%s\''%channel_name, html, re.M | re.I)
     if  m ==None:
         print 'geting from backup file'
-        req = urllib2.Request("https://dl.dropboxusercontent.com/s/ku3n4n53qphqnmn/Frame-code.txt")
+        req = urllib2.Request("http://www.pastebin.com/download.php?i=fKh4gG5s")
         html = _get(req)
         m = re.search('rtmp://(.*?)/%s\''%channel_name, html, re.M | re.I)
 
@@ -89,7 +95,7 @@ def __get_channel_time_player(channel_name):
         rtmp_url = m.group(1)
         rtmp_url='rtmp://%s/%s'%(rtmp_url,channel_name)
     play_path = rtmp_url[rtmp_url.rfind("/") + 1:]
-    return rtmp_url, play_path, repr(time_player_str).rstrip('0').rstrip('.')
+    return rtmp_url, play_path,time_player_str# repr(time_player_str).rstrip('0').rstrip('.')
 
 
 def get_rtmp_params(channel_name):
@@ -99,16 +105,24 @@ def get_rtmp_params(channel_name):
         'rtmp_url': rtmp_url,
         'playpath': play_path,
         'app': 'teledunet',
-        'swf_url': ('http://www.teledunet.com/player.swf?'
-                    'id0=%(time_player)s&'
-                   ) % {'time_player': time_player_id, 'channel_name': play_path, 'rtmp_url': rtmp_url},
-        'video_page_url': 'http://www.teledunet.com/player/?channel=%s conn=N:1 flashVer=WIN12,0,0,77' % play_path,
+        'swf_url': ('http://www.teledunet.com/mobile/player.swf?'
+                    'id0=%(time_player)s&channel=%(channel_name)s'
+                   ) % {'time_player': str(time_player_id), 'channel_name': channel_name, 'rtmp_url': rtmp_url},
+        'video_page_url': 'http://www.teledunet.com/mobile/ flashVer=WIN\\2014,0,0,145 swfVfy=true  timeout=20',
         'live': '1'
     }
 
 def get_channels():
-    html = _html(HEADER_REFERER)
-    channel_divs = lambda soup : soup.findAll("div", { "class" : re.compile("div_channel") })
+    loginname=selfAddon.getSetting( "teledunetTvLogin" )
+
+    _html(HEADER_REFERER)
+
+    headers = { "Referer": HEADER_REFERER  }
+    html = _html(TELEDUNET_CHANNEL_PAGE,headers)
+#    channel_divs = lambda soup : soup.findAll("div", { "class" : re.compile("div_channel") })
+    #print html
+    channel_divs = lambda soup : soup.findAll("tr")
+    #print channel_divs
     channels = [ChannelItem(el=el) for el in channel_divs(html)]
 
     # Extend Teledunet list with custom hardcoded list created by community

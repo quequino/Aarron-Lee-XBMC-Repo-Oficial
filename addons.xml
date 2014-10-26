@@ -119,7 +119,7 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
 
 <addon id="plugin.video.teledunet"
        name="Teledunet.com"
-       version="2.3.1"
+       version="2.3.7"
        provider-name="hadynz">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
