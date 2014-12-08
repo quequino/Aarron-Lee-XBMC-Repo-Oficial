@@ -1,2 +1,6 @@
+[B]Version 1.1[/B]
+- Nombre de Repo Cambiado
+
+
 [B]Version 1.0[/B]
 - Initial version

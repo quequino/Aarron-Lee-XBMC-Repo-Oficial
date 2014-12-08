@@ -138,15 +138,15 @@ It broadcasts channels through the internet 24/7. The service is completely free
     </extension>
 </addon>
 
-<addon id="repository.Aarron-Lee-XBMC-Repo-Oficial" name="Aarron-Lee-XBMC-Repo" version="1.0" provider-name="AarronLee">
+<addon id="repository.Aarron-Lee-XBMC-Repo-Oficial" name="Digitele TV Repo" version="1.1" provider-name="Digitele.es">
 	<extension point="xbmc.addon.repository" name="Aarron-Lee-XBMC-Repo-Oficial-1.0">
 		<info compressed="false">http://github.com/aarronlee/Aarron-Lee-XBMC-Repo-Oficial/raw/master/addons.xml</info>
 		<checksum>http://github.com/aarronlee/Aarron-Lee-XBMC-Repo-Oficial/raw/master/addons.xml.md5</checksum>
 		<datadir zip="true">http://github.com/aarronlee/Aarron-Lee-XBMC-Repo-Oficial/raw/master/zips</datadir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
-		<summary>Install Mis Addons</summary>
-		<description>Descarga e Instala Addons de AarronLee....... Para mas informacion y actualizaciones metete en www.tvguideaarronlee.com</description>
+		<summary>Instalar Add-Ons de Digitele</summary>
+		<description>Descarga e Instala Addons de Digitele Esp....... Para mas informacion y actualizaciones metete en www.digitele.es</description>
 		<platform>all</platform>
 	</extension>
 </addon>
@@ -312,7 +312,7 @@ Créditos: Cristi - Atlanta (xsopcast plugin); NouisMons (acestream engine plugi
     </extension>
 </addon>
 
-<addon id="script.tvguideaarronlee" name="DigiTele TV España" version="5.2.5" provider-name="AarronLee, DixieDean, Spoyser">
+<addon id="script.tvguideaarronlee" name="DigiTele TV España" version="5.2.6" provider-name="AarronLee, DixieDean, Spoyser">
     <requires>
 		<import addon="xbmc.python" version="2.1.0"/>
         <import addon="script.module.simplejson" version="2.0.10"/>
